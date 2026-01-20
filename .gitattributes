@@ -1,0 +1,30 @@
+# =======================================================
+# MIMIC GIT ATTRIBUTES
+# =======================================================
+
+# 1. CRITICAL: SHELL SCRIPTS (Must be LF for Docker)
+*.sh text eol=lf
+Dockerfile text eol=lf
+docker-compose.yml text eol=lf
+.dockerignore text eol=lf
+
+# 2. WINDOWS SCRIPTS (Must be CRLF for PowerShell)
+*.ps1 text eol=crlf
+
+# 3. CODE FILES (Auto-detect)
+*.cs text
+*.ts text
+*.vue text
+*.js text
+*.json text
+*.md text
+*.xml text
+*.csproj text
+*.sln text
+
+# 4. BINARY FILES (Do not touch)
+*.png binary
+*.jpg binary
+*.ico binary
+*.dll binary
+*.db binary

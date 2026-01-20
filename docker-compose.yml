@@ -1,0 +1,28 @@
+services:
+  # Backend (.NET 9)
+  mimic-api:
+    image: ${DOTNET_IMAGE:-mcr.microsoft.com/dotnet/sdk:9.0}
+    user: root
+    container_name: mimic_api
+    working_dir: /app
+    ports:
+      - "${API_PORT:-5000}:8080"
+    volumes:
+      - ./src/Mimic.API:/app
+      - ./data:/app/data
+    entrypoint: ["dotnet", "watch", "run", "--urls", "http://0.0.0.0:8080"]
+    environment:
+      - ASPNETCORE_ENVIRONMENT=${ASPNETCORE_ENVIRONMENT:-Development}
+
+  # Frontend (Vue 3 + Yarn)
+  mimic-ui:
+    image: ${NODE_IMAGE:-node:20-alpine}
+    container_name: mimic_ui
+    working_dir: /app
+    ports:
+      - "${UI_PORT:-3000}:5173"
+    volumes:
+      - ./src/Mimic.UI:/app
+    command: sh -c "yarn install && yarn dev --host"
+    depends_on:
+      - mimic-api
