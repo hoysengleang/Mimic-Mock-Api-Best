@@ -1,7 +1,7 @@
 # 🎭 Mimic Mock API
 
 <div align="center">
-  <p><strong>A full-stack mock API platform for rapid prototyping and internal testing</strong></p>
+  <p><strong>A full-stack mock API platform for rapid prototyping and internal testings</strong></p>
   <p>Built with .NET 9 and Vue 3 | Docker-Ready | Enterprise-Grade Testing Solution</p>
   
   <p>
@@ -1403,3 +1403,4 @@ If this project helps your team with API testing and development, please conside
   <p><strong>Built with ❤️ using .NET 9, Vue 3, and Docker</strong></p>
   <p><em>Making API testing easier for development teams worldwide</em></p>
 </div>
+
