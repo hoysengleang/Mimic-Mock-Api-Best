@@ -36,7 +36,7 @@
 
 ## 🌿 Contribution Workflow
 
-### 1. Find Your Task
+### 1. Find Your Task And Structure
 
 Check the <b><a href="https://github.com/hoysengleang/Mimic-Mock-Api-Best/projects">Project Board</a></b> for <b>"Todo"</b> items.
 
