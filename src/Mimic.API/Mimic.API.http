@@ -1,6 +1,37 @@
-@Mimic.API_HostAddress = http://localhost:5213
+@baseUrl = http://localhost:5000
+@mockId =
 
-GET {{Mimic.API_HostAddress}}/weatherforecast/
-Accept: application/json
+### Health
+GET {{baseUrl}}/api/health
 
-###
+### List mocks
+GET {{baseUrl}}/api/mocks
+
+### Create mock
+POST {{baseUrl}}/api/mocks
+Content-Type: application/json
+
+{
+  "path": "/api/users",
+  "method": "GET",
+  "response": { "users": [] },
+  "status_code": 200,
+  "delay": 0
+}
+
+### Get mock by id
+GET {{baseUrl}}/api/mocks/{{mockId}}
+
+### Update mock
+PUT {{baseUrl}}/api/mocks/{{mockId}}
+Content-Type: application/json
+
+{
+  "response": { "users": [{ "id": 1, "name": "Jane" }] }
+}
+
+### Delete mock
+DELETE {{baseUrl}}/api/mocks/{{mockId}}
+
+### Call mock endpoint
+GET {{baseUrl}}/mock/api/users

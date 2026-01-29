@@ -2,10 +2,11 @@
 
 <div align="center">
   <p><strong>A full-stack mock API platform for rapid prototyping and internal testings</strong></p>
-  <p>Built with .NET 9 and Vue 3 | Docker-Ready | Enterprise-Grade Testing Solution</p>
+  <p>Built with FastAPI and Vue 3 | Docker-Ready | Enterprise-Grade Testing Solution</p>
   
   <p>
-    <img src="https://img.shields.io/badge/.NET-9.0-512BD4?style=for-the-badge&logo=dotnet" alt=".NET 9">
+    <img src="https://img.shields.io/badge/Python-3.12-3776AB?style=for-the-badge&logo=python" alt="Python 3.12">
+    <img src="https://img.shields.io/badge/FastAPI-latest-009688?style=for-the-badge&logo=fastapi" alt="FastAPI">
     <img src="https://img.shields.io/badge/Vue.js-3.0-4FC08D?style=for-the-badge&logo=vue.js" alt="Vue 3">
     <img src="https://img.shields.io/badge/Docker-Ready-2496ED?style=for-the-badge&logo=docker" alt="Docker">
     <img src="https://img.shields.io/badge/TypeScript-5.0-3178C6?style=for-the-badge&logo=typescript" alt="TypeScript">
@@ -82,7 +83,7 @@
   <details open>
     <summary><strong>🔥 Full-Stack Solution</strong></summary>
     <ul>
-      <li>.NET 9 backend with ASP.NET Core Web API</li>
+      <li>FastAPI backend with Python 3.12</li>
       <li>Vue 3 frontend with TypeScript support</li>
       <li>RESTful API architecture</li>
     </ul>
@@ -101,7 +102,7 @@
   <details open>
     <summary><strong>⚡ Hot Reload & Live Development</strong></summary>
     <ul>
-      <li>Backend: <code>dotnet watch</code> for automatic C# reload</li>
+      <li>Backend: <code>uvicorn --reload</code> for automatic Python reload</li>
       <li>Frontend: Vite HMR for instant UI updates</li>
       <li>Zero restart needed during development</li>
     </ul>
@@ -119,7 +120,7 @@
   <details open>
     <summary><strong>📦 Modern Tech Stack</strong></summary>
     <ul>
-      <li>Latest .NET 9 and Vue 3 frameworks</li>
+      <li>Latest FastAPI and Vue 3 frameworks</li>
       <li>TypeScript for type safety</li>
       <li>Yarn for fast package management</li>
       <li>Vite for blazing-fast builds</li>
@@ -140,19 +141,19 @@
     <th>Purpose</th>
   </tr>
   <tr>
-    <td><strong>.NET</strong></td>
-    <td>9.0</td>
-    <td>Core API framework with modern C# features</td>
+    <td><strong>Python</strong></td>
+    <td>3.12</td>
+    <td>Runtime for the backend service</td>
   </tr>
   <tr>
-    <td><strong>ASP.NET Core</strong></td>
-    <td>9.0</td>
-    <td>High-performance Web API framework</td>
+    <td><strong>FastAPI</strong></td>
+    <td>Latest</td>
+    <td>Modern, high-performance Web API framework</td>
   </tr>
   <tr>
-    <td><strong>Hot Reload</strong></td>
-    <td>Built-in</td>
-    <td>Watch mode for automatic recompilation</td>
+    <td><strong>Uvicorn</strong></td>
+    <td>Latest</td>
+    <td>ASGI server with reload support</td>
   </tr>
 </table>
 
@@ -241,8 +242,8 @@ Before you begin, ensure you have the following installed:
     <th>Purpose</th>
   </tr>
   <tr>
-    <td>.NET SDK</td>
-    <td>9.0</td>
+    <td>Python</td>
+    <td>3.12+</td>
     <td>Run backend without Docker</td>
   </tr>
   <tr>
@@ -324,8 +325,8 @@ docker-compose up -d
   </tr>
   <tr>
     <td><strong>API Docs</strong></td>
-    <td><a href="http://localhost:5000/swagger">http://localhost:5000/swagger</a></td>
-    <td>Swagger/OpenAPI documentation (if enabled)</td>
+    <td><a href="http://localhost:5000/docs">http://localhost:5000/docs</a></td>
+    <td>FastAPI Swagger/OpenAPI documentation</td>
   </tr>
 </table>
 
@@ -338,7 +339,7 @@ docker-compose up -d
 ```
 Mimic-Mock-Api-Best/
 ├── 📂 src/                      # Source code directory
-│   ├── 📂 Mimic.API/            # Backend (.NET 9 API)
+│   ├── 📂 Mimic.API/            # Backend (FastAPI)
 │   └── 📂 Mimic.UI/             # Frontend (Vue 3 + TypeScript)
 │
 ├── 📂 setups/                   # Setup and initialization scripts
@@ -350,7 +351,6 @@ Mimic-Mock-Api-Best/
 ├── 📄 docker-compose.yml        # Docker orchestration configuration
 ├── 📄 .env.examplle            # Environment variables template
 ├── 📄 .env                      # Your local environment config (git-ignored)
-├── 📄 Mimic.sln                 # .NET solution file
 ├── 📄 .gitignore                # Git ignore rules
 ├── 📄 .gitattributes            # Git line-ending configuration
 ├── 📄 LICENSE                   # Project license
@@ -366,35 +366,23 @@ Mimic-Mock-Api-Best/
 
 ```
 src/Mimic.API/
-├── 📂 Properties/
-│   └── launchSettings.json      # Development launch profiles
+├── 📂 app/
+│   ├── 📂 api/
+│   │   ├── deps.py              # Dependency providers
+│   │   └── 📂 routes/
+│   │       ├── health.py        # Health check endpoints
+│   │       └── mocks.py         # Mock CRUD + mock responder
+│   ├── 📂 core/
+│   │   └── config.py            # Environment-based settings
+│   ├── 📂 db/
+│   │   └── store.py             # JSON-backed mock storage
+│   ├── 📂 schemas/
+│   │   └── mock.py              # Pydantic models
+│   ├── __init__.py
+│   └── main.py                  # FastAPI app entry point
 │
-├── 📄 Program.cs                # 🔥 Main application entry point
-│   │                            # Purpose: Configure services, middleware, routing
-│   │                            # What to modify: Add new services, CORS, authentication
-│   │
-├── 📄 Mimic.API.csproj          # 🔥 Project configuration & dependencies
-│   │                            # Purpose: NuGet packages, target framework
-│   │                            # What to modify: Add new packages, update versions
-│   │
-├── 📄 Mimic.API.http            # 🧪 HTTP test file for API endpoints
-│   │                            # Purpose: Quick API testing in IDE
-│   │                            # What to modify: Add test requests for new endpoints
-│   │
-├── 📄 appsettings.json          # ⚙️ Production configuration
-│   │                            # Purpose: Database, logging, API settings
-│   │                            # What to modify: Connection strings, app settings
-│   │
-├── 📄 appsettings.Development.json  # ⚙️ Development-specific config
-│   │                            # Purpose: Dev-only settings, verbose logging
-│   │                            # What to modify: Development overrides
-│   │
-└── 📂 (Future directories - add as needed)
-    ├── Controllers/             # API endpoint controllers
-    ├── Models/                  # Data models and DTOs
-    ├── Services/                # Business logic layer
-    ├── Repositories/            # Data access layer
-    └── Middleware/              # Custom middleware components
+├── 📄 requirements.txt          # Python dependencies
+└── 📄 Mimic.API.http            # HTTP request samples
 ```
 
 #### 📖 Key Files Explained
@@ -406,29 +394,29 @@ src/Mimic.API/
     <th>When to Modify</th>
   </tr>
   <tr>
-    <td><code>Program.cs</code></td>
-    <td>Application startup and configuration</td>
-    <td>Adding services, middleware, CORS, authentication</td>
+    <td><code>app/main.py</code></td>
+    <td>FastAPI app startup and router wiring</td>
+    <td>Adding middleware, routers, app-level settings</td>
   </tr>
   <tr>
-    <td><code>Mimic.API.csproj</code></td>
-    <td>Project dependencies and build settings</td>
-    <td>Adding NuGet packages, changing .NET version</td>
+    <td><code>app/db/store.py</code></td>
+    <td>JSON-backed mock persistence layer</td>
+    <td>Changing storage strategy or indexes</td>
   </tr>
   <tr>
-    <td><code>appsettings.json</code></td>
-    <td>Production configuration</td>
-    <td>Database connections, API keys, production settings</td>
+    <td><code>app/schemas/mock.py</code></td>
+    <td>Pydantic models for request/response</td>
+    <td>Adding fields or validation rules</td>
   </tr>
   <tr>
-    <td><code>appsettings.Development.json</code></td>
-    <td>Development overrides</td>
-    <td>Local database, debug settings, verbose logging</td>
+    <td><code>requirements.txt</code></td>
+    <td>Python dependencies</td>
+    <td>Adding/updating packages</td>
   </tr>
   <tr>
     <td><code>Mimic.API.http</code></td>
     <td>Manual API testing file</td>
-    <td>Testing new endpoints in Visual Studio/VS Code</td>
+    <td>Testing new endpoints in VS Code</td>
   </tr>
 </table>
 
@@ -567,7 +555,7 @@ setups/
     │
     │ Purpose:
     │ - Check Docker permissions
-    │ - Verify dependencies (.NET packages, node_modules)
+    │ - Verify dependencies (Python packages, node_modules)
     │ - Install missing dependencies
     │ - Start the application
     │
@@ -597,7 +585,7 @@ graph TD
     G --> I{User confirms?}
     I -->|Yes| J[docker compose build]
     I -->|No| E
-    J --> K[dotnet restore]
+    J --> K[pip install -r requirements.txt]
     K --> L[yarn install]
     L --> H
     H --> M[Prompt to start]
@@ -621,10 +609,10 @@ graph TD
 ```yaml
 services:
   # ============================================
-  # BACKEND SERVICE (.NET 9 API)
+  # BACKEND SERVICE (FASTAPI)
   # ============================================
   mimic-api:
-    image: mcr.microsoft.com/dotnet/sdk:9.0    # Official .NET SDK image
+    image: python:3.12-slim                      # Official Python image
     container_name: mimic_api                   # Container name for easy access
     working_dir: /app                           # Working directory inside container
     ports:
@@ -632,9 +620,11 @@ services:
     volumes:
       - ./src/Mimic.API:/app                    # Mount source code (hot reload)
       - ./data:/app/data                        # Mount data directory
-    entrypoint: ["dotnet", "watch", "run"]      # Hot reload enabled
+    command: sh -c "pip install --no-cache-dir -r requirements.txt && uvicorn app.main:app --host 0.0.0.0 --port 8080 --reload"
     environment:
-      - ASPNETCORE_ENVIRONMENT=Development      # Development mode
+      - APP_NAME=Mimic Mock API
+      - API_PREFIX=/api
+      - DATA_DIR=./data
 
   # ============================================
   # FRONTEND SERVICE (Vue 3 + Vite)
@@ -678,7 +668,7 @@ services:
   <tr>
     <td><strong>Environment</strong></td>
     <td>Pass environment variables</td>
-    <td><code>ASPNETCORE_ENVIRONMENT=Development</code></td>
+    <td><code>APP_NAME=Mimic Mock API</code></td>
   </tr>
   <tr>
     <td><strong>depends_on</strong></td>
@@ -708,13 +698,15 @@ UI_PORT=3000               # Frontend UI accessible at http://localhost:3000
 # ============================================
 # DOCKER IMAGE VERSIONS
 # ============================================
-DOTNET_IMAGE=mcr.microsoft.com/dotnet/sdk:9.0    # .NET SDK version
-NODE_IMAGE=node:20-alpine                         # Node.js version (Alpine for size)
+PYTHON_IMAGE=python:3.12-slim  # Python image for FastAPI
+NODE_IMAGE=node:20-alpine      # Node.js version (Alpine for size)
 
 # ============================================
 # APPLICATION CONFIGURATION
 # ============================================
-ASPNETCORE_ENVIRONMENT=Development                # Development | Staging | Production
+APP_NAME=Mimic Mock API
+API_PREFIX=/api
+DATA_DIR=./data
 ```
 
 #### 📖 Configuration Options
@@ -739,10 +731,10 @@ ASPNETCORE_ENVIRONMENT=Development                # Development | Staging | Prod
     <td>Any available port (1024-65535)</td>
   </tr>
   <tr>
-    <td><code>DOTNET_IMAGE</code></td>
-    <td>mcr.microsoft.com/dotnet/sdk:9.0</td>
-    <td>.NET SDK Docker image</td>
-    <td>Any .NET SDK image tag</td>
+    <td><code>PYTHON_IMAGE</code></td>
+    <td>python:3.12-slim</td>
+    <td>FastAPI Python image</td>
+    <td>Any Python image tag</td>
   </tr>
   <tr>
     <td><code>NODE_IMAGE</code></td>
@@ -751,10 +743,22 @@ ASPNETCORE_ENVIRONMENT=Development                # Development | Staging | Prod
     <td>node:18-alpine, node:20, etc.</td>
   </tr>
   <tr>
-    <td><code>ASPNETCORE_ENVIRONMENT</code></td>
-    <td>Development</td>
-    <td>ASP.NET Core environment</td>
-    <td>Development, Staging, Production</td>
+    <td><code>APP_NAME</code></td>
+    <td>Mimic Mock API</td>
+    <td>Application display name</td>
+    <td>Any string</td>
+  </tr>
+  <tr>
+    <td><code>API_PREFIX</code></td>
+    <td>/api</td>
+    <td>Prefix for API routes</td>
+    <td>Any URL path</td>
+  </tr>
+  <tr>
+    <td><code>DATA_DIR</code></td>
+    <td>./data</td>
+    <td>Path to JSON storage directory</td>
+    <td>Any writable path</td>
   </tr>
 </table>
 
@@ -767,15 +771,14 @@ API_PORT=5001
 UI_PORT=3001
 ```
 
-**Scenario 2: Using Different .NET Version**
+**Scenario 2: Using Different Python Version**
 ```env
-# Use .NET 8 instead of .NET 9
-DOTNET_IMAGE=mcr.microsoft.com/dotnet/sdk:8.0
+# Use Python 3.11 instead of 3.12
+PYTHON_IMAGE=python:3.11-slim
 ```
 
-**Scenario 3: Production Environment**
+**Scenario 3: Production Ports**
 ```env
-ASPNETCORE_ENVIRONMENT=Production
 API_PORT=80
 UI_PORT=443
 ```
@@ -818,34 +821,33 @@ docker-compose logs --tail=100 mimic-api
 docker exec -it mimic_api sh
 
 # Inside container, you can:
-dotnet --version           # Check .NET version
-dotnet build               # Manual build
-dotnet test                # Run tests
+python --version           # Check Python version
+pip list                   # List installed packages
 ```
 
-#### Adding New NuGet Packages
+#### Adding New Python Packages
 
 ```bash
 # Option 1: Inside container
 docker exec -it mimic_api sh
-dotnet add package Newtonsoft.Json
+pip install requests
+pip freeze > requirements.txt
 
 # Option 2: From host (without Docker)
 cd src/Mimic.API
-dotnet add package Newtonsoft.Json
+# Add package to requirements.txt, then:
 docker-compose restart mimic-api
 ```
 
 #### Hot Reload Behavior
 
-The backend uses `dotnet watch run`, which automatically:
-- ✅ Detects C# file changes (.cs)
-- ✅ Recompiles the application
+The backend uses `uvicorn --reload`, which automatically:
+- ✅ Detects Python file changes (.py)
 - ✅ Restarts the web server
-- ❌ Doesn't watch: .csproj, appsettings.json (requires manual restart)
+- ❌ Doesn't watch: requirements.txt (requires manual restart)
 
 ```bash
-# If .csproj or appsettings.json changed, restart:
+# If requirements.txt changed, restart:
 docker-compose restart mimic-api
 ```
 
@@ -989,7 +991,7 @@ docker-compose up --build mimic-api
 #### Prerequisites
 
 Install these on your host machine:
-- [.NET 9 SDK](https://dotnet.microsoft.com/download/dotnet/9.0)
+- [Python 3.12+](https://www.python.org/downloads/)
 - [Node.js 20+](https://nodejs.org/)
 - [Yarn](https://yarnpkg.com/getting-started/install)
 
@@ -998,14 +1000,15 @@ Install these on your host machine:
 ```bash
 cd src/Mimic.API
 
-# Restore dependencies
-dotnet restore
+# Create virtual environment
+python -m venv .venv
+source .venv/bin/activate
+
+# Install dependencies
+pip install -r requirements.txt
 
 # Run in watch mode
-dotnet watch run
-
-# Or run normally
-dotnet run
+uvicorn app.main:app --host 0.0.0.0 --port 5000 --reload
 ```
 
 Backend will be available at: `http://localhost:5000`
@@ -1061,7 +1064,7 @@ Response: 200 OK
     "path": "/api/users",
     "method": "GET",
     "response": {...},
-    "statusCode": 200
+    "status_code": 200
   }
 ]
 
@@ -1072,7 +1075,7 @@ Content-Type: application/json
   "path": "/api/users",
   "method": "GET",
   "response": {"users": []},
-  "statusCode": 200,
+  "status_code": 200,
   "delay": 0
 }
 
@@ -1085,7 +1088,7 @@ PUT /api/mocks/{id}
 Content-Type: application/json
 {
   "response": {"users": [{"id": 1, "name": "John"}]},
-  "statusCode": 200
+  "status_code": 200
 }
 
 # Delete mock endpoint
@@ -1112,7 +1115,7 @@ curl -X POST http://localhost:5000/api/mocks \
     "path": "/api/products",
     "method": "GET",
     "response": {"products": [{"id": 1, "name": "Widget"}]},
-    "statusCode": 200
+    "status_code": 200
   }'
 
 # Call the mock endpoint
@@ -1140,7 +1143,7 @@ describe('User API Integration', () => {
         path: '/api/users',
         method: 'GET',
         response: { users: [{ id: 1, name: 'Test User' }] },
-        statusCode: 200
+        status_code: 200
       })
     });
   });
@@ -1209,11 +1212,11 @@ docker-compose up --build mimic-ui
   </tr>
   <tr>
     <td><strong>Backend API not responding</strong></td>
-    <td>.NET packages not restored</td>
+    <td>Python packages not installed</td>
     <td>
       <pre>
-# Restore packages
-docker exec -it mimic_api dotnet restore
+# Install packages
+docker exec -it mimic_api sh -c "pip install -r /app/requirements.txt"
 docker-compose restart mimic-api
       </pre>
     </td>
@@ -1282,7 +1285,8 @@ docker stats
 # Nuclear option: remove everything and start fresh
 docker-compose down -v
 docker system prune -a
-rm -rf src/Mimic.API/bin src/Mimic.API/obj
+rm -rf src/Mimic.API/.venv src/Mimic.API/__pycache__
+rm -f src/Mimic.API/.deps_installed
 rm -rf src/Mimic.UI/node_modules
 docker-compose up --build
 ```
@@ -1400,7 +1404,7 @@ If this project helps your team with API testing and development, please conside
 ---
 
 <div align="center">
-  <p><strong>Built with ❤️ using .NET 9, Vue 3, and Docker</strong></p>
+  <p><strong>Built with ❤️ using FastAPI, Vue 3, and Docker</strong></p>
   <p><em>Making API testing easier for development teams worldwide</em></p>
 </div>
 

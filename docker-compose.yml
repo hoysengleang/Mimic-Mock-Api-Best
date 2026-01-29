@@ -1,8 +1,7 @@
 services:
-  # Backend (.NET 9)
+  # Backend (FastAPI)
   mimic-api:
-    image: ${DOTNET_IMAGE:-mcr.microsoft.com/dotnet/sdk:9.0}
-    user: root
+    image: ${PYTHON_IMAGE:-python:3.12-slim}
     container_name: mimic_api
     working_dir: /app
     ports:
@@ -10,9 +9,12 @@ services:
     volumes:
       - ./src/Mimic.API:/app
       - ./data:/app/data
-    entrypoint: ["dotnet", "watch", "run", "--urls", "http://0.0.0.0:8080"]
+    command: sh -c "pip install --no-cache-dir -r requirements.txt && uvicorn app.main:app --host 0.0.0.0 --port 8080 --reload"
     environment:
-      - ASPNETCORE_ENVIRONMENT=${ASPNETCORE_ENVIRONMENT:-Development}
+      - APP_NAME=${APP_NAME:-Mimic Mock API}
+      - API_PREFIX=${API_PREFIX:-/api}
+      - DATA_DIR=${DATA_DIR:-./data}
+      - PYTHONUNBUFFERED=1
 
   # Frontend (Vue 3 + Yarn)
   mimic-ui:
