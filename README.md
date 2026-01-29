@@ -1,10 +1,7 @@
 <div align="center">
-  <p><strong>A full-stack mock API platform for rapid prototyping and internal testings</strong></p>
+  <h1>🎭 Mimic Mock API</h1>
+  <p><strong>A full-stack mock API platform for rapid prototyping and internal testing</strong></p>
   <p>Built with FastAPI and Vue 3 | Docker-Ready | Enterprise-Grade Testing Solution</p>
-  
-  <h1>🎭 Mimic Mock API Engine</h1>
-  <p><strong>The "Infrastructure-First" Mocking Engine for .NET 9 & Vue 3</strong></p>
-
   <p>
     <img src="https://img.shields.io/badge/Python-3.12-3776AB?style=for-the-badge&logo=python" alt="Python 3.12">
     <img src="https://img.shields.io/badge/FastAPI-latest-009688?style=for-the-badge&logo=fastapi" alt="FastAPI">
@@ -12,32 +9,74 @@
     <img src="https://img.shields.io/badge/Docker-Ready-2496ED?style=for-the-badge&logo=docker" alt="Docker">
     <img src="https://img.shields.io/badge/TypeScript-5.0-3178C6?style=for-the-badge&logo=typescript" alt="TypeScript">
   </p>
+</div>
 
-<table>
-  <tr>
-    <th>Scenario</th>
-    <th>How Mimic Helps</th>
-  </tr>
-  <tr>
-    <td><strong>Frontend Development</strong></td>
-    <td>Develop UI without waiting for backend APIs to be ready</td>
-  </tr>
-  <tr>
-    <td><strong>API Testing</strong></td>
-    <td>Create mock endpoints to test API consumers</td>
-  </tr>
-  <tr>
-    <td><strong>Integration Testing</strong></td>
-    <td>Simulate third-party API responses in controlled environments</td>
-  </tr>
-  <tr>
-    <td><strong>Demo & Prototyping</strong></td>
-    <td>Quickly spin up working prototypes for stakeholder demos</td>
-  </tr>
-  <tr>
-    <td><strong>CI/CD Testing</strong></td>
-    <td>Provide consistent mock data for automated test pipelines</td>
-  </tr>
+---
+
+## 📖 Table of Contents
+
+<table align="center" width="100%" cellpadding="6" cellspacing="0">
+  <tbody>
+    <tr>
+      <td valign="top" width="50%">
+        <ul>
+          <li><a href="#-overview">Overview</a></li>
+          <li><a href="#-key-features">Key Features</a></li>
+          <li><a href="#-tech-stack">Tech Stack</a></li>
+          <li><a href="#-prerequisites">Prerequisites</a></li>
+          <li><a href="#-quick-start">Quick Start</a></li>
+        </ul>
+      </td>
+      <td valign="top" width="50%">
+        <ul>
+          <li><a href="#-detailed-project-structure">Detailed Project Structure</a></li>
+          <li><a href="#-configuration-guide">Configuration Guide</a></li>
+          <li><a href="#-development-workflows">Development Workflows</a></li>
+          <li><a href="#-api-usage-guide">API Usage Guide</a></li>
+          <li><a href="#-troubleshooting">Troubleshooting</a></li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+---
+
+## 🎯 Overview
+
+**Mimic Mock API** is an open-source, self-hosted mock API platform designed for **internal testing and development teams**. It eliminates backend dependencies during frontend development, API testing, and integration testing phases.
+
+### 🎪 Use Cases
+
+<table width="100%" cellpadding="6" cellspacing="0">
+  <thead>
+    <tr>
+      <th align="left">Scenario</th>
+      <th align="left">How Mimic Helps</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Frontend Development</strong></td>
+      <td>Develop UI without waiting for backend APIs to be ready</td>
+    </tr>
+    <tr>
+      <td><strong>API Testing</strong></td>
+      <td>Create mock endpoints to test API consumers</td>
+    </tr>
+    <tr>
+      <td><strong>Integration Testing</strong></td>
+      <td>Simulate third-party API responses in controlled environments</td>
+    </tr>
+    <tr>
+      <td><strong>Demo & Prototyping</strong></td>
+      <td>Quickly spin up working prototypes for stakeholder demos</td>
+    </tr>
+    <tr>
+      <td><strong>CI/CD Testing</strong></td>
+      <td>Provide consistent mock data for automated test pipelines</td>
+    </tr>
+  </tbody>
 </table>
 
 ---
@@ -99,77 +138,89 @@
 
 ### Backend Stack
 
-<table>
-  <tr>
-    <th>Technology</th>
-    <th>Version</th>
-    <th>Purpose</th>
-  </tr>
-  <tr>
-    <td><strong>Python</strong></td>
-    <td>3.12</td>
-    <td>Runtime for the backend service</td>
-  </tr>
-  <tr>
-    <td><strong>FastAPI</strong></td>
-    <td>Latest</td>
-    <td>Modern, high-performance Web API framework</td>
-  </tr>
-  <tr>
-    <td><strong>Uvicorn</strong></td>
-    <td>Latest</td>
-    <td>ASGI server with reload support</td>
-  </tr>
+<table width="100%" cellpadding="6" cellspacing="0">
+  <thead>
+    <tr>
+      <th align="left">Technology</th>
+      <th align="left">Version</th>
+      <th align="left">Purpose</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Python</strong></td>
+      <td>3.12</td>
+      <td>Runtime for the backend service</td>
+    </tr>
+    <tr>
+      <td><strong>FastAPI</strong></td>
+      <td>Latest</td>
+      <td>Modern, high-performance Web API framework</td>
+    </tr>
+    <tr>
+      <td><strong>Uvicorn</strong></td>
+      <td>Latest</td>
+      <td>ASGI server with reload support</td>
+    </tr>
+  </tbody>
 </table>
 
 ### Frontend Stack
 
-<table>
-  <tr>
-    <th>Technology</th>
-    <th>Version</th>
-    <th>Purpose</th>
-  </tr>
-  <tr>
-    <td><strong>Vue.js</strong></td>
-    <td>3.x</td>
-    <td>Progressive JavaScript framework for UI</td>
-  </tr>
-  <tr>
-    <td><strong>TypeScript</strong></td>
-    <td>5.x</td>
-    <td>Type-safe development with IntelliSense</td>
-  </tr>
-  <tr>
-    <td><strong>Vite</strong></td>
-    <td>Latest</td>
-    <td>Next-gen frontend build tool (HMR)</td>
-  </tr>
-  <tr>
-    <td><strong>Yarn</strong></td>
-    <td>Latest</td>
-    <td>Fast, reliable dependency management</td>
-  </tr>
+<table width="100%" cellpadding="6" cellspacing="0">
+  <thead>
+    <tr>
+      <th align="left">Technology</th>
+      <th align="left">Version</th>
+      <th align="left">Purpose</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Vue.js</strong></td>
+      <td>3.x</td>
+      <td>Progressive JavaScript framework for UI</td>
+    </tr>
+    <tr>
+      <td><strong>TypeScript</strong></td>
+      <td>5.x</td>
+      <td>Type-safe development with IntelliSense</td>
+    </tr>
+    <tr>
+      <td><strong>Vite</strong></td>
+      <td>Latest</td>
+      <td>Next-gen frontend build tool (HMR)</td>
+    </tr>
+    <tr>
+      <td><strong>Yarn</strong></td>
+      <td>Latest</td>
+      <td>Fast, reliable dependency management</td>
+    </tr>
+  </tbody>
 </table>
 
 ### DevOps Stack
 
-<table>
-  <tr>
-    <th>Technology</th>
-    <th>Version</th>
-    <th>Purpose</th>
-  </tr>
-  <tr>
-    <td><strong>Docker</strong></td>
-    <td>20.10+</td>
-    <td>Containerization for consistent environments</td>
-  </tr>
-  <tr>
-    <td><strong>Docker Compose</strong></td>
-    <td>2.0+</td>
-    <td>Multi-container orchestration</td>
-  </tr>
+<table width="100%" cellpadding="6" cellspacing="0">
+  <thead>
+    <tr>
+      <th align="left">Technology</th>
+      <th align="left">Version</th>
+      <th align="left">Purpose</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Docker</strong></td>
+      <td>20.10+</td>
+      <td>Containerization for consistent environments</td>
+    </tr>
+    <tr>
+      <td><strong>Docker Compose</strong></td>
+      <td>2.0+</td>
+      <td>Multi-container orchestration</td>
+    </tr>
+  </tbody>
 </table>
 
 ---
@@ -178,49 +229,57 @@
 
 Before you begin, ensure you have the following installed:
 
-<table>
-  <tr>
-    <th>Software</th>
-    <th>Minimum Version</th>
-    <th>Download Link</th>
-  </tr>
-  <tr>
-    <td><strong>Docker</strong></td>
-    <td>20.10+</td>
-    <td><a href="https://www.docker.com/get-started">Get Docker</a></td>
-  </tr>
-  <tr>
-    <td><strong>Docker Compose</strong></td>
-    <td>2.0+</td>
-    <td><em>Included in Docker Desktop</em></td>
-  </tr>
+<table width="100%" cellpadding="6" cellspacing="0">
+  <thead>
+    <tr>
+      <th align="left">Software</th>
+      <th align="left">Minimum Version</th>
+      <th align="left">Download Link</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Docker</strong></td>
+      <td>20.10+</td>
+      <td><a href="https://www.docker.com/get-started">Get Docker</a></td>
+    </tr>
+    <tr>
+      <td><strong>Docker Compose</strong></td>
+      <td>2.0+</td>
+      <td><em>Included in Docker Desktop</em></td>
+    </tr>
+  </tbody>
 </table>
 
 > **💡 Note**: Docker Desktop for Windows/Mac includes Docker Compose automatically. Linux users may need to install it separately.
 
 ### Optional (for non-Docker development)
 
-<table>
-  <tr>
-    <th>Software</th>
-    <th>Version</th>
-    <th>Purpose</th>
-  </tr>
-  <tr>
-    <td>Python</td>
-    <td>3.12+</td>
-    <td>Run backend without Docker</td>
-  </tr>
-  <tr>
-    <td>Node.js</td>
-    <td>20+</td>
-    <td>Run frontend without Docker</td>
-  </tr>
-  <tr>
-    <td>Yarn</td>
-    <td>Latest</td>
-    <td>Frontend package management</td>
-  </tr>
+<table width="100%" cellpadding="6" cellspacing="0">
+  <thead>
+    <tr>
+      <th align="left">Software</th>
+      <th align="left">Version</th>
+      <th align="left">Purpose</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Python</td>
+      <td>3.12+</td>
+      <td>Run backend without Docker</td>
+    </tr>
+    <tr>
+      <td>Node.js</td>
+      <td>20+</td>
+      <td>Run frontend without Docker</td>
+    </tr>
+    <tr>
+      <td>Yarn</td>
+      <td>Latest</td>
+      <td>Frontend package management</td>
+    </tr>
+  </tbody>
 </table>
 
 ---
@@ -272,27 +331,31 @@ docker-compose up -d
 
 ### Step 5: Access the Application
 
-<table>
-  <tr>
-    <th>Service</th>
-    <th>URL</th>
-    <th>Purpose</th>
-  </tr>
-  <tr>
-    <td><strong>Frontend UI</strong></td>
-    <td><a href="http://localhost:3000">http://localhost:3000</a></td>
-    <td>Main web interface for managing mock APIs</td>
-  </tr>
-  <tr>
-    <td><strong>Backend API</strong></td>
-    <td><a href="http://localhost:5000">http://localhost:5000</a></td>
-    <td>RESTful API endpoints</td>
-  </tr>
-  <tr>
-    <td><strong>API Docs</strong></td>
-    <td><a href="http://localhost:5000/docs">http://localhost:5000/docs</a></td>
-    <td>FastAPI Swagger/OpenAPI documentation</td>
-  </tr>
+<table width="100%" cellpadding="6" cellspacing="0">
+  <thead>
+    <tr>
+      <th align="left">Service</th>
+      <th align="left">URL</th>
+      <th align="left">Purpose</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Frontend UI</strong></td>
+      <td><a href="http://localhost:3000">http://localhost:3000</a></td>
+      <td>Main web interface for managing mock APIs</td>
+    </tr>
+    <tr>
+      <td><strong>Backend API</strong></td>
+      <td><a href="http://localhost:5000">http://localhost:5000</a></td>
+      <td>RESTful API endpoints</td>
+    </tr>
+    <tr>
+      <td><strong>API Docs</strong></td>
+      <td><a href="http://localhost:5000/docs">http://localhost:5000/docs</a></td>
+      <td>FastAPI OpenAPI documentation</td>
+    </tr>
+  </tbody>
 </table>
 
 ---
@@ -352,37 +415,41 @@ src/Mimic.API/
 
 #### 📖 Key Files Explained
 
-<table>
-  <tr>
-    <th>File</th>
-    <th>Purpose</th>
-    <th>When to Modify</th>
-  </tr>
-  <tr>
-    <td><code>app/main.py</code></td>
-    <td>FastAPI app startup and router wiring</td>
-    <td>Adding middleware, routers, app-level settings</td>
-  </tr>
-  <tr>
-    <td><code>app/db/store.py</code></td>
-    <td>JSON-backed mock persistence layer</td>
-    <td>Changing storage strategy or indexes</td>
-  </tr>
-  <tr>
-    <td><code>app/schemas/mock.py</code></td>
-    <td>Pydantic models for request/response</td>
-    <td>Adding fields or validation rules</td>
-  </tr>
-  <tr>
-    <td><code>requirements.txt</code></td>
-    <td>Python dependencies</td>
-    <td>Adding/updating packages</td>
-  </tr>
-  <tr>
-    <td><code>Mimic.API.http</code></td>
-    <td>Manual API testing file</td>
-    <td>Testing new endpoints in VS Code</td>
-  </tr>
+<table width="100%" cellpadding="6" cellspacing="0">
+  <thead>
+    <tr>
+      <th align="left">File</th>
+      <th align="left">Purpose</th>
+      <th align="left">When to Modify</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>app/main.py</code></td>
+      <td>FastAPI app startup and router wiring</td>
+      <td>Adding middleware, routers, app-level settings</td>
+    </tr>
+    <tr>
+      <td><code>app/db/store.py</code></td>
+      <td>JSON-backed mock persistence layer</td>
+      <td>Changing storage strategy or indexes</td>
+    </tr>
+    <tr>
+      <td><code>app/schemas/mock.py</code></td>
+      <td>Pydantic models for request/response</td>
+      <td>Adding fields or validation rules</td>
+    </tr>
+    <tr>
+      <td><code>requirements.txt</code></td>
+      <td>Python dependencies</td>
+      <td>Adding/updating packages</td>
+    </tr>
+    <tr>
+      <td><code>Mimic.API.http</code></td>
+      <td>Manual API testing file</td>
+      <td>Testing new endpoints in VS Code</td>
+    </tr>
+  </tbody>
 </table>
 
 </details>
@@ -432,77 +499,85 @@ src/Mimic.UI/
 
 #### 📖 Key Files Explained
 
-<table>
-  <tr>
-    <th>File</th>
-    <th>Purpose</th>
-    <th>When to Modify</th>
-  </tr>
-  <tr>
-    <td><code>package.json</code></td>
-    <td>Dependencies and npm scripts</td>
-    <td>Adding libraries, modifying build scripts</td>
-  </tr>
-  <tr>
-    <td><code>vite.config.ts</code></td>
-    <td>Vite build tool configuration</td>
-    <td>Add plugins, configure proxy, optimize builds</td>
-  </tr>
-  <tr>
-    <td><code>main.ts</code></td>
-    <td>Vue app initialization</td>
-    <td>Register global plugins, components, directives</td>
-  </tr>
-  <tr>
-    <td><code>App.vue</code></td>
-    <td>Root Vue component</td>
-    <td>Global layout, navigation, app-wide logic</td>
-  </tr>
-  <tr>
-    <td><code>tsconfig.json</code></td>
-    <td>TypeScript compiler options</td>
-    <td>Strict mode, path aliases, module resolution</td>
-  </tr>
+<table width="100%" cellpadding="6" cellspacing="0">
+  <thead>
+    <tr>
+      <th align="left">File</th>
+      <th align="left">Purpose</th>
+      <th align="left">When to Modify</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>package.json</code></td>
+      <td>Dependencies and npm scripts</td>
+      <td>Adding libraries, modifying build scripts</td>
+    </tr>
+    <tr>
+      <td><code>vite.config.ts</code></td>
+      <td>Vite build tool configuration</td>
+      <td>Add plugins, configure proxy, optimize builds</td>
+    </tr>
+    <tr>
+      <td><code>main.ts</code></td>
+      <td>Vue app initialization</td>
+      <td>Register global plugins, components, directives</td>
+    </tr>
+    <tr>
+      <td><code>App.vue</code></td>
+      <td>Root Vue component</td>
+      <td>Global layout, navigation, app-wide logic</td>
+    </tr>
+    <tr>
+      <td><code>tsconfig.json</code></td>
+      <td>TypeScript compiler options</td>
+      <td>Strict mode, path aliases, module resolution</td>
+    </tr>
+  </tbody>
 </table>
 
 #### 📂 Directory Purposes
 
-<table>
-  <tr>
-    <th>Directory</th>
-    <th>Purpose</th>
-    <th>Example Contents</th>
-  </tr>
-  <tr>
-    <td><code>src/components/</code></td>
-    <td>Reusable UI components</td>
-    <td>Button.vue, Modal.vue, FormInput.vue</td>
-  </tr>
-  <tr>
-    <td><code>src/views/</code></td>
-    <td>Page-level components</td>
-    <td>Home.vue, Dashboard.vue, MockEditor.vue</td>
-  </tr>
-  <tr>
-    <td><code>src/services/</code></td>
-    <td>API communication layer</td>
-    <td>mockApi.ts, httpClient.ts</td>
-  </tr>
-  <tr>
-    <td><code>src/stores/</code></td>
-    <td>Global state management</td>
-    <td>mockStore.ts, userStore.ts (Pinia)</td>
-  </tr>
-  <tr>
-    <td><code>src/types/</code></td>
-    <td>TypeScript interfaces/types</td>
-    <td>Mock.ts, ApiResponse.ts</td>
-  </tr>
-  <tr>
-    <td><code>src/router/</code></td>
-    <td>Vue Router setup</td>
-    <td>index.ts (route definitions)</td>
-  </tr>
+<table width="100%" cellpadding="6" cellspacing="0">
+  <thead>
+    <tr>
+      <th align="left">Directory</th>
+      <th align="left">Purpose</th>
+      <th align="left">Example Contents</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>src/components/</code></td>
+      <td>Reusable UI components</td>
+      <td>Button.vue, Modal.vue, FormInput.vue</td>
+    </tr>
+    <tr>
+      <td><code>src/views/</code></td>
+      <td>Page-level components</td>
+      <td>Home.vue, Dashboard.vue, MockEditor.vue</td>
+    </tr>
+    <tr>
+      <td><code>src/services/</code></td>
+      <td>API communication layer</td>
+      <td>mockApi.ts, httpClient.ts</td>
+    </tr>
+    <tr>
+      <td><code>src/stores/</code></td>
+      <td>Global state management</td>
+      <td>mockStore.ts, userStore.ts (Pinia)</td>
+    </tr>
+    <tr>
+      <td><code>src/types/</code></td>
+      <td>TypeScript interfaces/types</td>
+      <td>Mock.ts, ApiResponse.ts</td>
+    </tr>
+    <tr>
+      <td><code>src/router/</code></td>
+      <td>Vue Router setup</td>
+      <td>index.ts (route definitions)</td>
+    </tr>
+  </tbody>
 </table>
 
 </details>
@@ -609,37 +684,41 @@ services:
 
 #### 🔑 Docker Compose Key Concepts
 
-<table>
-  <tr>
-    <th>Concept</th>
-    <th>Purpose</th>
-    <th>Example</th>
-  </tr>
-  <tr>
-    <td><strong>Services</strong></td>
-    <td>Define individual containers</td>
-    <td><code>mimic-api</code>, <code>mimic-ui</code></td>
-  </tr>
-  <tr>
-    <td><strong>Volumes</strong></td>
-    <td>Mount host directories into containers</td>
-    <td><code>./src/Mimic.API:/app</code> (enables hot reload)</td>
-  </tr>
-  <tr>
-    <td><strong>Ports</strong></td>
-    <td>Expose container ports to host</td>
-    <td><code>5000:8080</code> (access via localhost:5000)</td>
-  </tr>
-  <tr>
-    <td><strong>Environment</strong></td>
-    <td>Pass environment variables</td>
-    <td><code>APP_NAME=Mimic Mock API</code></td>
-  </tr>
-  <tr>
-    <td><strong>depends_on</strong></td>
-    <td>Control startup order</td>
-    <td>UI starts after API is ready</td>
-  </tr>
+<table width="100%" cellpadding="6" cellspacing="0">
+  <thead>
+    <tr>
+      <th align="left">Concept</th>
+      <th align="left">Purpose</th>
+      <th align="left">Example</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Services</strong></td>
+      <td>Define individual containers</td>
+      <td><code>mimic-api</code>, <code>mimic-ui</code></td>
+    </tr>
+    <tr>
+      <td><strong>Volumes</strong></td>
+      <td>Mount host directories into containers</td>
+      <td><code>./src/Mimic.API:/app</code> (enables hot reload)</td>
+    </tr>
+    <tr>
+      <td><strong>Ports</strong></td>
+      <td>Expose container ports to host</td>
+      <td><code>5000:8080</code> (access via localhost:5000)</td>
+    </tr>
+    <tr>
+      <td><strong>Environment</strong></td>
+      <td>Pass environment variables</td>
+      <td><code>APP_NAME=Mimic Mock API</code></td>
+    </tr>
+    <tr>
+      <td><strong>depends_on</strong></td>
+      <td>Control startup order</td>
+      <td>UI starts after API is ready</td>
+    </tr>
+  </tbody>
 </table>
 
 </details>
@@ -676,55 +755,59 @@ DATA_DIR=./data
 
 #### 📖 Configuration Options
 
-<table>
-  <tr>
-    <th>Variable</th>
-    <th>Default</th>
-    <th>Purpose</th>
-    <th>Valid Values</th>
-  </tr>
-  <tr>
-    <td><code>API_PORT</code></td>
-    <td>5000</td>
-    <td>Backend API port on host machine</td>
-    <td>Any available port (1024-65535)</td>
-  </tr>
-  <tr>
-    <td><code>UI_PORT</code></td>
-    <td>3000</td>
-    <td>Frontend UI port on host machine</td>
-    <td>Any available port (1024-65535)</td>
-  </tr>
-  <tr>
-    <td><code>PYTHON_IMAGE</code></td>
-    <td>python:3.12-slim</td>
-    <td>FastAPI Python image</td>
-    <td>Any Python image tag</td>
-  </tr>
-  <tr>
-    <td><code>NODE_IMAGE</code></td>
-    <td>node:20-alpine</td>
-    <td>Node.js Docker image</td>
-    <td>node:18-alpine, node:20, etc.</td>
-  </tr>
-  <tr>
-    <td><code>APP_NAME</code></td>
-    <td>Mimic Mock API</td>
-    <td>Application display name</td>
-    <td>Any string</td>
-  </tr>
-  <tr>
-    <td><code>API_PREFIX</code></td>
-    <td>/api</td>
-    <td>Prefix for API routes</td>
-    <td>Any URL path</td>
-  </tr>
-  <tr>
-    <td><code>DATA_DIR</code></td>
-    <td>./data</td>
-    <td>Path to JSON storage directory</td>
-    <td>Any writable path</td>
-  </tr>
+<table width="100%" cellpadding="6" cellspacing="0">
+  <thead>
+    <tr>
+      <th align="left">Variable</th>
+      <th align="left">Default</th>
+      <th align="left">Purpose</th>
+      <th align="left">Valid Values</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>API_PORT</code></td>
+      <td>5000</td>
+      <td>Backend API port on host machine</td>
+      <td>Any available port (1024-65535)</td>
+    </tr>
+    <tr>
+      <td><code>UI_PORT</code></td>
+      <td>3000</td>
+      <td>Frontend UI port on host machine</td>
+      <td>Any available port (1024-65535)</td>
+    </tr>
+    <tr>
+      <td><code>PYTHON_IMAGE</code></td>
+      <td>python:3.12-slim</td>
+      <td>FastAPI Python image</td>
+      <td>Any Python image tag</td>
+    </tr>
+    <tr>
+      <td><code>NODE_IMAGE</code></td>
+      <td>node:20-alpine</td>
+      <td>Node.js Docker image</td>
+      <td>node:18-alpine, node:20, etc.</td>
+    </tr>
+    <tr>
+      <td><code>APP_NAME</code></td>
+      <td>Mimic Mock API</td>
+      <td>Application display name</td>
+      <td>Any string</td>
+    </tr>
+    <tr>
+      <td><code>API_PREFIX</code></td>
+      <td>/api</td>
+      <td>Prefix for API routes</td>
+      <td>Any URL path</td>
+    </tr>
+    <tr>
+      <td><code>DATA_DIR</code></td>
+      <td>./data</td>
+      <td>Path to JSON storage directory</td>
+      <td>Any writable path</td>
+    </tr>
+  </tbody>
 </table>
 
 #### 🎯 Common Configuration Scenarios
@@ -1132,17 +1215,20 @@ describe('User API Integration', () => {
 <details open>
 <summary><strong>📂 Click to expand troubleshooting guide</strong></summary>
 
-<table>
-  <tr>
-    <th>Issue</th>
-    <th>Cause</th>
-    <th>Solution</th>
-  </tr>
-  <tr>
-    <td><strong>Port already in use</strong></td>
-    <td>Another service is using port 5000 or 3000</td>
-    <td>
-      <pre>
+<table width="100%" cellpadding="6" cellspacing="0">
+  <thead>
+    <tr>
+      <th align="left">Issue</th>
+      <th align="left">Cause</th>
+      <th align="left">Solution</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Port already in use</strong></td>
+      <td>Another service is using port 5000 or 3000</td>
+      <td>
+        <pre>
 # Edit .env file
 API_PORT=5001
 UI_PORT=3001
@@ -1150,68 +1236,69 @@ UI_PORT=3001
 # Restart
 docker-compose down
 docker-compose up
-      </pre>
-    </td>
-  </tr>
-  <tr>
-    <td><strong>Containers not starting</strong></td>
-    <td>Corrupted volumes or cached images</td>
-    <td>
-      <pre>
+        </pre>
+      </td>
+    </tr>
+    <tr>
+      <td><strong>Containers not starting</strong></td>
+      <td>Corrupted volumes or cached images</td>
+      <td>
+        <pre>
 # Clean rebuild
 docker-compose down -v
 docker-compose up --build
-      </pre>
-    </td>
-  </tr>
-  <tr>
-    <td><strong>Frontend shows blank page</strong></td>
-    <td>node_modules not installed or corrupted</td>
-    <td>
-      <pre>
+        </pre>
+      </td>
+    </tr>
+    <tr>
+      <td><strong>Frontend shows blank page</strong></td>
+      <td>node_modules not installed or corrupted</td>
+      <td>
+        <pre>
 # Rebuild frontend
 docker-compose down
 docker-compose up --build mimic-ui
-      </pre>
-    </td>
-  </tr>
-  <tr>
-    <td><strong>Backend API not responding</strong></td>
-    <td>Python packages not installed</td>
-    <td>
-      <pre>
+        </pre>
+      </td>
+    </tr>
+    <tr>
+      <td><strong>Backend API not responding</strong></td>
+      <td>Python packages not installed</td>
+      <td>
+        <pre>
 # Install packages
 docker exec -it mimic_api sh -c "pip install -r /app/requirements.txt"
 docker-compose restart mimic-api
-      </pre>
-    </td>
-  </tr>
-  <tr>
-    <td><strong>Permission denied errors</strong></td>
-    <td>Docker daemon requires sudo</td>
-    <td>
-      <pre>
+        </pre>
+      </td>
+    </tr>
+    <tr>
+      <td><strong>Permission denied errors</strong></td>
+      <td>Docker daemon requires sudo</td>
+      <td>
+        <pre>
 # Use setup script (handles sudo automatically)
 ./setups/setup.sh
 
 # Or add user to docker group
 sudo usermod -aG docker $USER
 newgrp docker
-      </pre>
-    </td>
-  </tr>
-  <tr>
-    <td><strong>Hot reload not working</strong></td>
-    <td>Volume mounts not configured correctly</td>
-    <td>
-      <pre>
+        </pre>
+      </td>
+    </tr>
+    <tr>
+      <td><strong>Hot reload not working</strong></td>
+      <td>Volume mounts not configured correctly</td>
+      <td>
+        <pre>
 # Check docker-compose.yml volumes section
 # Ensure paths match your system
 
 # On Windows, ensure Docker Desktop has access to drive
-      </pre>
-    </td>
-  </tr>
+        </pre>
+      </td>
+    </tr>
+  </tbody>
 </table>
 
 #### Viewing Detailed Logs
@@ -1331,29 +1418,50 @@ This project is licensed under the terms specified in the [LICENSE](LICENSE) fil
 
 ## 👤 Author & Maintainer
 
-<table>
-  <tr>
-    <td align="center">
-      <img src="https://avatars.githubusercontent.com/u/122990039?v=4" width="100px;" alt="hoysengleang"/>
-      <br />
-      <sub><b>hoysengleang</b></sub>
-      <br />
-      <a href="https://github.com/hoysengleang">GitHub Profile</a>
-    </td>
-  </tr>
+<table align="center" cellpadding="6" cellspacing="0">
+  <tbody>
+    <tr>
+      <td align="center">
+        <img src="https://avatars.githubusercontent.com/u/122990039?v=4" width="100px;" alt="hoysengleang"/>
+        <br />
+        <sub><b>hoysengleang</b></sub>
+        <br />
+        <a href="https://github.com/hoysengleang">GitHub Profile</a>
+      </td>
+    </tr>
+  </tbody>
 </table>
 
 ---
 
 ## 📂 Project Structure
 
-
-| Folder | Responsibility |
-| :--- | :--- |
-| `src/Mimic.API` | **Backend**: .NET 9 Core Engine & Middleware. |
-| `src/Mimic.UI` | **Frontend**: Vue 3 Dashboard (Vite + TS). |
-| `setups/` | **Automation**: Shell and PowerShell setup scripts. |
-| `docker-compose.yml` | **Orchestration**: Global stack configuration. |
+<table width="100%" cellpadding="6" cellspacing="0">
+  <thead>
+    <tr>
+      <th align="left">Folder</th>
+      <th align="left">Responsibility</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>src/Mimic.API</code></td>
+      <td><strong>Backend</strong>: FastAPI service and mock storage.</td>
+    </tr>
+    <tr>
+      <td><code>src/Mimic.UI</code></td>
+      <td><strong>Frontend</strong>: Vue 3 dashboard (Vite + TypeScript).</td>
+    </tr>
+    <tr>
+      <td><code>setups/</code></td>
+      <td><strong>Automation</strong>: Shell and PowerShell setup scripts.</td>
+    </tr>
+    <tr>
+      <td><code>docker-compose.yml</code></td>
+      <td><strong>Orchestration</strong>: Global stack configuration.</td>
+    </tr>
+  </tbody>
+</table>
 
 <hr />
 
