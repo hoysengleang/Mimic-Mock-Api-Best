@@ -9,16 +9,16 @@
 
 <table>
   <tr>
-    <th>Backend (.NET 9)</th>
+    <th>Backend (FastAPI)</th>
     <th>Frontend (Vue 3)</th>
   </tr>
   <tr>
     <td>
       <ul>
-        <li>Clean Architecture: logic in Services</li>
-        <li>Use <b>IOptions</b> for settings</li>
-        <li>PascalCase for Methods</li>
-        <li>_camelCase for private fields</li>
+        <li>Keep routers in <code>app/api/routes</code></li>
+        <li>Pydantic schemas live in <code>app/schemas</code></li>
+        <li>Use snake_case for functions and variables</li>
+        <li>Add type hints for public APIs</li>
       </ul>
     </td>
     <td>

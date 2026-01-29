@@ -26,7 +26,7 @@ fi
 
 # 2. CHECK DEPENDENCIES
 MISSING_PACKAGES=false
-if [ ! -d "src/Mimic.API/obj" ]; then MISSING_PACKAGES=true; fi
+if [ ! -f "src/Mimic.API/.deps_installed" ]; then MISSING_PACKAGES=true; fi
 if [ ! -d "src/Mimic.UI/node_modules" ]; then MISSING_PACKAGES=true; fi
 
 # 3. INSTALLATION
@@ -41,8 +41,8 @@ if [ "$MISSING_PACKAGES" = true ]; then
         
         $DOCKER_COMPOSE build
         
-        echo "Restoring .NET packages..."
-        $DOCKER_COMPOSE run --rm mimic-api dotnet restore
+        echo "Installing backend packages..."
+        $DOCKER_COMPOSE run --rm mimic-api sh -c "pip install --no-cache-dir -r /app/requirements.txt && touch /app/.deps_installed"
 
         echo "Installing Frontend packages..."
         $DOCKER_COMPOSE run --rm mimic-ui yarn install
