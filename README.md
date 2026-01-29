@@ -1,9 +1,10 @@
-# 🎭 Mimic Mock API
-
 <div align="center">
   <p><strong>A full-stack mock API platform for rapid prototyping and internal testings</strong></p>
   <p>Built with FastAPI and Vue 3 | Docker-Ready | Enterprise-Grade Testing Solution</p>
   
+  <h1>🎭 Mimic Mock API Engine</h1>
+  <p><strong>The "Infrastructure-First" Mocking Engine for .NET 9 & Vue 3</strong></p>
+
   <p>
     <img src="https://img.shields.io/badge/Python-3.12-3776AB?style=for-the-badge&logo=python" alt="Python 3.12">
     <img src="https://img.shields.io/badge/FastAPI-latest-009688?style=for-the-badge&logo=fastapi" alt="FastAPI">
@@ -11,42 +12,6 @@
     <img src="https://img.shields.io/badge/Docker-Ready-2496ED?style=for-the-badge&logo=docker" alt="Docker">
     <img src="https://img.shields.io/badge/TypeScript-5.0-3178C6?style=for-the-badge&logo=typescript" alt="TypeScript">
   </p>
-</div>
-
----
-
-## 📖 Table of Contents
-
-<table>
-  <tr>
-    <td>
-      <ul>
-        <li><a href="#-overview">Overview</a></li>
-        <li><a href="#-key-features">Key Features</a></li>
-        <li><a href="#-tech-stack">Tech Stack</a></li>
-        <li><a href="#-prerequisites">Prerequisites</a></li>
-        <li><a href="#-quick-start">Quick Start</a></li>
-      </ul>
-    </td>
-    <td>
-      <ul>
-        <li><a href="#-detailed-project-structure">Detailed Project Structure</a></li>
-        <li><a href="#-configuration-guide">Configuration Guide</a></li>
-        <li><a href="#-development-workflows">Development Workflows</a></li>
-        <li><a href="#-api-usage-guide">API Usage Guide</a></li>
-        <li><a href="#-troubleshooting">Troubleshooting</a></li>
-      </ul>
-    </td>
-  </tr>
-</table>
-
----
-
-## 🎯 Overview
-
-**Mimic Mock API** is an open-source, self-hosted mock API platform designed for **internal testing and development teams**. It eliminates backend dependencies during frontend development, API testing, and integration testing phases.
-
-### 🎪 Use Cases
 
 <table>
   <tr>
@@ -1380,25 +1345,20 @@ This project is licensed under the terms specified in the [LICENSE](LICENSE) fil
 
 ---
 
-## 🌟 Show Your Support
+## 📂 Project Structure
 
-If this project helps your team with API testing and development, please consider:
 
-- ⭐ **Starring the repository** on GitHub
-- 🐛 **Reporting bugs** via Issues
-- 💡 **Suggesting features** via Discussions
-- 🤝 **Contributing** via Pull Requests
-- 📢 **Sharing** with your team
+| Folder | Responsibility |
+| :--- | :--- |
+| `src/Mimic.API` | **Backend**: .NET 9 Core Engine & Middleware. |
+| `src/Mimic.UI` | **Frontend**: Vue 3 Dashboard (Vite + TS). |
+| `setups/` | **Automation**: Shell and PowerShell setup scripts. |
+| `docker-compose.yml` | **Orchestration**: Global stack configuration. |
 
----
-
-## 📊 Project Stats
+<hr />
 
 <div align="center">
-  <img src="https://img.shields.io/github/stars/hoysengleang/Mimic-Mock-Api-Best?style=social" alt="Stars">
-  <img src="https://img.shields.io/github/forks/hoysengleang/Mimic-Mock-Api-Best?style=social" alt="Forks">
-  <img src="https://img.shields.io/github/issues/hoysengleang/Mimic-Mock-Api-Best" alt="Issues">
-  <img src="https://img.shields.io/github/license/hoysengleang/Mimic-Mock-Api-Best" alt="License">
+  <p>Maintained by <b><a href="https://github.com/hoysengleang">hoysengleang</a></b></p>
 </div>
 
 ---
