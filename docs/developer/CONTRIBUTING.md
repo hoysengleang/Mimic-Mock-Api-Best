@@ -11,6 +11,7 @@
   <tr>
     <th>Backend (FastAPI)</th>
     <th>Frontend (Vue 3)</th>
+
   </tr>
   <tr>
     <td>
