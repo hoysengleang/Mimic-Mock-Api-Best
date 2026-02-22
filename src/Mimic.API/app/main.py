@@ -16,7 +16,9 @@ app.add_middleware(
 )
 
 app.include_router(health.router, prefix=settings.api_prefix)
+
 app.include_router(mocks.router, prefix=settings.api_prefix)
+
 app.include_router(mocks.mock_router)
 
 
