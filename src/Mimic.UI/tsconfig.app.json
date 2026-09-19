@@ -5,6 +5,13 @@
     "types": [
       "vite/client"
     ],
+    /* Path alias — mirrors the `@` alias in vite.config.ts */
+    "baseUrl": ".",
+    "paths": {
+      "@/*": [
+        "./src/*"
+      ]
+    },
     /* Linting */
     "strict": true,
     "noUnusedLocals": true,

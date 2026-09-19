@@ -484,3 +484,20 @@ $RECYCLE.BIN/
 
 # Vim temporary swap files
 *.swp
+
+# --- Mimic ---
+# Runtime data (SQLite database, mock definitions)
+/data/
+src/Mimic.API/data/
+
+# Playwright
+playwright-report/
+src/Mimic.UI/test-results/
+
+# Yarn Berry — keep the release, drop the caches
+.yarn/*
+!.yarn/patches
+!.yarn/releases
+!.yarn/plugins
+!.yarn/sdks
+.pnp.*

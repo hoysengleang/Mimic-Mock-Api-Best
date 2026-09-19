@@ -1,0 +1,31 @@
+# Production-style overlay: built assets, no bind mounts, no autoreload.
+#   docker compose -f docker-compose.yml -f docker-compose.prod.yml up --build
+#
+# The UI container serves the built files and proxies /api and /mock to the
+# API, so only one port needs to be published.
+
+services:
+  mimic-api:
+    build:
+      target: base
+    ports: []          # reached through the UI container, not published
+    volumes:
+      - mimic-data:/app/data
+    environment:
+      DEBUG: "false"
+      SEED_DEMO_DATA: ${SEED_DEMO_DATA:-true}
+      # Set to false when hosting Mimic where other people can reach it, so
+      # it cannot be used to probe your internal network.
+      ALLOW_PRIVATE_NETWORK: ${ALLOW_PRIVATE_NETWORK:-false}
+      RATE_LIMIT_ENABLED: "true"
+
+  mimic-ui:
+    build:
+      target: production
+    ports:
+      - "${UI_PORT:-3000}:80"
+    volumes: []
+    environment: {}
+
+volumes:
+  mimic-data:

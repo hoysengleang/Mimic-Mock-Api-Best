@@ -1,12 +1,14 @@
+"""Shared FastAPI dependencies."""
+
 from __future__ import annotations
 
-from functools import lru_cache
+from typing import Annotated
 
-from app.core.config import get_settings
-from app.db.store import MockStore
+from fastapi import Depends
+from sqlalchemy.orm import Session
 
+from app.core.config import Settings, get_settings
+from app.db.base import get_db
 
-@lru_cache
-def get_store() -> MockStore:
-    settings = get_settings()
-    return MockStore(settings.data_file)
+DbSession = Annotated[Session, Depends(get_db)]
+AppSettings = Annotated[Settings, Depends(get_settings)]
