@@ -1,1327 +1,257 @@
 <div align="center">
-  <h1>🎭 Mimic Mock API</h1>
-  <p><strong>A full-stack mock API platform for rapid prototyping and internal testing</strong></p>
-  <p>Built with FastAPI and Vue 3 | Docker-Ready | Enterprise-Grade Testing Solution</p>
-  <p>
-    <img src="https://img.shields.io/badge/Python-3.12-3776AB?style=for-the-badge&logo=python" alt="Python 3.12">
-    <img src="https://img.shields.io/badge/FastAPI-latest-009688?style=for-the-badge&logo=fastapi" alt="FastAPI">
-    <img src="https://img.shields.io/badge/Vue.js-3.0-4FC08D?style=for-the-badge&logo=vue.js" alt="Vue 3">
-    <img src="https://img.shields.io/badge/Docker-Ready-2496ED?style=for-the-badge&logo=docker" alt="Docker">
-    <img src="https://img.shields.io/badge/TypeScript-5.0-3178C6?style=for-the-badge&logo=typescript" alt="TypeScript">
-  </p>
+
+# Mimic
+
+**An API client, a mock server, and a test runner — in one app you run yourself.**
+
+Build requests, send them, assert on the responses, and loop whole collections
+to catch the failures that only happen sometimes. Fake the endpoints that do
+not exist yet. No account, no cloud, no telemetry.
+
 </div>
 
 ---
 
-## 📖 Table of Contents
+## What it does
 
-<table align="center" width="100%" cellpadding="6" cellspacing="0">
-  <tbody>
-    <tr>
-      <td valign="top" width="50%">
-        <ul>
-          <li><a href="#-overview">Overview</a></li>
-          <li><a href="#-key-features">Key Features</a></li>
-          <li><a href="#-tech-stack">Tech Stack</a></li>
-          <li><a href="#-prerequisites">Prerequisites</a></li>
-          <li><a href="#-quick-start">Quick Start</a></li>
-        </ul>
-      </td>
-      <td valign="top" width="50%">
-        <ul>
-          <li><a href="#-detailed-project-structure">Detailed Project Structure</a></li>
-          <li><a href="#-configuration-guide">Configuration Guide</a></li>
-          <li><a href="#-development-workflows">Development Workflows</a></li>
-          <li><a href="#-api-usage-guide">API Usage Guide</a></li>
-        </ul>
-      </td>
-    </tr>
-  </tbody>
-</table>
+| | |
+|---|---|
+| **Send requests** | Any method, any URL. Headers, query params, JSON/XML/text/form bodies, and Bearer / Basic / API-key auth. Requests go out from the server, so there is no CORS to fight and timings are real. |
+| **Assert on responses** | Check the status, a JSON field, a header, the body, or how long it took. Assertions are built from dropdowns — they are data, never code, so a shared collection can never execute anything. |
+| **Run collections in a loop** | Run every request in a collection, N times over. This is how you catch flaky endpoints, intermittent timeouts, and rate limits that a single request hides. |
+| **Mock endpoints** | Define a path and the JSON it should return. Supports `:id` path parameters, `*` wildcards, custom status codes, headers, and artificial delay for testing spinners and timeouts. |
+| **Environments** | Keep `{{baseUrl}}`, `{{token}}` and friends in named sets. Switch environments to point the same requests at local, staging, or production. |
+| **History** | Every request you send is recorded with its response and timing. Credentials are masked before anything is written to disk. |
 
 ---
 
-## 🎯 Overview
+## Quick start
 
-**Mimic Mock API** is an open-source, self-hosted mock API platform designed for **internal testing and development teams**. It eliminates backend dependencies during frontend development, API testing, and integration testing phases.
-
-### 🎪 Use Cases
-
-<table width="100%" cellpadding="6" cellspacing="0">
-  <thead>
-    <tr>
-      <th align="left">Scenario</th>
-      <th align="left">How Mimic Helps</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><strong>Frontend Development</strong></td>
-      <td>Develop UI without waiting for backend APIs to be ready</td>
-    </tr>
-    <tr>
-      <td><strong>API Testing</strong></td>
-      <td>Create mock endpoints to test API consumers</td>
-    </tr>
-    <tr>
-      <td><strong>Integration Testing</strong></td>
-      <td>Simulate third-party API responses in controlled environments</td>
-    </tr>
-    <tr>
-      <td><strong>Demo & Prototyping</strong></td>
-      <td>Quickly spin up working prototypes for stakeholder demos</td>
-    </tr>
-    <tr>
-      <td><strong>CI/CD Testing</strong></td>
-      <td>Provide consistent mock data for automated test pipelines</td>
-    </tr>
-  </tbody>
-</table>
-
----
-
-## 🚀 Key Features
-
-<div>
-  <details open>
-    <summary><strong>🔥 Full-Stack Solution</strong></summary>
-    <ul>
-      <li>FastAPI backend with Python 3.12</li>
-      <li>Vue 3 frontend with TypeScript support</li>
-      <li>RESTful API architecture</li>
-    </ul>
-  </details>
-
-  <details open>
-    <summary><strong>🐳 Docker-First Development</strong></summary>
-    <ul>
-      <li>Pre-configured Docker Compose setup</li>
-      <li>One-command startup</li>
-      <li>Isolated development environment</li>
-      <li>No local SDK installation required</li>
-    </ul>
-  </details>
-
-  <details open>
-    <summary><strong>⚡ Hot Reload & Live Development</strong></summary>
-    <ul>
-      <li>Backend: <code>uvicorn --reload</code> for automatic Python reload</li>
-      <li>Frontend: Vite HMR for instant UI updates</li>
-      <li>Zero restart needed during development</li>
-    </ul>
-  </details>
-
-  <details open>
-    <summary><strong>🔧 Flexible Configuration</strong></summary>
-    <ul>
-      <li>Environment-based settings (.env support)</li>
-      <li>Customizable ports and versions</li>
-      <li>Multi-environment support (Dev, Staging, Prod)</li>
-    </ul>
-  </details>
-
-  <details open>
-    <summary><strong>📦 Modern Tech Stack</strong></summary>
-    <ul>
-      <li>Latest FastAPI and Vue 3 frameworks</li>
-      <li>TypeScript for type safety</li>
-      <li>Yarn for fast package management</li>
-      <li>Vite for blazing-fast builds</li>
-    </ul>
-  </details>
-</div>
-
----
-
-## 🛠 Tech Stack
-
-### Backend Stack
-
-<table width="100%" cellpadding="6" cellspacing="0">
-  <thead>
-    <tr>
-      <th align="left">Technology</th>
-      <th align="left">Version</th>
-      <th align="left">Purpose</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><strong>Python</strong></td>
-      <td>3.12</td>
-      <td>Runtime for the backend service</td>
-    </tr>
-    <tr>
-      <td><strong>FastAPI</strong></td>
-      <td>Latest</td>
-      <td>Modern, high-performance Web API framework</td>
-    </tr>
-    <tr>
-      <td><strong>Uvicorn</strong></td>
-      <td>Latest</td>
-      <td>ASGI server with reload support</td>
-    </tr>
-  </tbody>
-</table>
-
-### Frontend Stack
-
-<table width="100%" cellpadding="6" cellspacing="0">
-  <thead>
-    <tr>
-      <th align="left">Technology</th>
-      <th align="left">Version</th>
-      <th align="left">Purpose</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><strong>Vue.js</strong></td>
-      <td>3.x</td>
-      <td>Progressive JavaScript framework for UI</td>
-    </tr>
-    <tr>
-      <td><strong>TypeScript</strong></td>
-      <td>5.x</td>
-      <td>Type-safe development with IntelliSense</td>
-    </tr>
-    <tr>
-      <td><strong>Vite</strong></td>
-      <td>Latest</td>
-      <td>Next-gen frontend build tool (HMR)</td>
-    </tr>
-    <tr>
-      <td><strong>Yarn</strong></td>
-      <td>Latest</td>
-      <td>Fast, reliable dependency management</td>
-    </tr>
-  </tbody>
-</table>
-
-### DevOps Stack
-
-<table width="100%" cellpadding="6" cellspacing="0">
-  <thead>
-    <tr>
-      <th align="left">Technology</th>
-      <th align="left">Version</th>
-      <th align="left">Purpose</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><strong>Docker</strong></td>
-      <td>20.10+</td>
-      <td>Containerization for consistent environments</td>
-    </tr>
-    <tr>
-      <td><strong>Docker Compose</strong></td>
-      <td>2.0+</td>
-      <td>Multi-container orchestration</td>
-    </tr>
-  </tbody>
-</table>
-
----
-
-## 📦 Prerequisites
-
-Before you begin, ensure you have the following installed:
-
-<table width="100%" cellpadding="6" cellspacing="0">
-  <thead>
-    <tr>
-      <th align="left">Software</th>
-      <th align="left">Minimum Version</th>
-      <th align="left">Download Link</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><strong>Docker</strong></td>
-      <td>20.10+</td>
-      <td><a href="https://www.docker.com/get-started">Get Docker</a></td>
-    </tr>
-    <tr>
-      <td><strong>Docker Compose</strong></td>
-      <td>2.0+</td>
-      <td><em>Included in Docker Desktop</em></td>
-    </tr>
-  </tbody>
-</table>
-
-> **💡 Note**: Docker Desktop for Windows/Mac includes Docker Compose automatically. Linux users may need to install it separately.
-
-### Optional (for non-Docker development)
-
-<table width="100%" cellpadding="6" cellspacing="0">
-  <thead>
-    <tr>
-      <th align="left">Software</th>
-      <th align="left">Version</th>
-      <th align="left">Purpose</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>Python</td>
-      <td>3.12+</td>
-      <td>Run backend without Docker</td>
-    </tr>
-    <tr>
-      <td>Node.js</td>
-      <td>20+</td>
-      <td>Run frontend without Docker</td>
-    </tr>
-    <tr>
-      <td>Yarn</td>
-      <td>Latest</td>
-      <td>Frontend package management</td>
-    </tr>
-  </tbody>
-</table>
-
----
-
-## ⚡ Quick Start
-
-### Step 1: Clone the Repository
+You need [Docker](https://docs.docker.com/get-docker/). Nothing else.
 
 ```bash
 git clone https://github.com/hoysengleang/Mimic-Mock-Api-Best.git
-cd Mimic-Mock-Api-Best
 ```
-
-### Step 2: Configure Environment
 
 ```bash
-# Copy environment template
-cp .env.examplle .env
-
-# (Optional) Edit .env to customize ports
-nano .env  # or use your preferred editor
+cd Mimic-Mock-Api-Best && cp .env.example .env
 ```
-
-### Step 3: Start with Setup Script (Recommended)
 
 ```bash
-# Make setup script executable
-chmod +x setups/setup.sh
-
-# Run automated setup
-./setups/setup.sh
+docker compose up --build
 ```
 
-The setup script will:
-- ✅ Check Docker permissions
-- ✅ Verify dependencies
-- ✅ Install missing packages
-- ✅ Start the application
+Then open **<http://localhost:3000>**.
 
-### Step 4: Manual Start (Alternative)
+The first run seeds a working example — a few mock endpoints and a collection
+that calls them — so you can press **Send** immediately and see it work. To
+start empty instead, set `SEED_DEMO_DATA=false` in `.env`.
+
+| | |
+|---|---|
+| App | <http://localhost:3000> |
+| API docs (interactive) | <http://localhost:5000/docs> |
+| Your mock endpoints | `http://localhost:5000/mock/...` |
+
+### Production-style run
+
+Serves built assets through nginx, with no autoreload and only one port open:
 
 ```bash
-# Build and start all services
-docker-compose up --build
-
-# Or run in detached mode
-docker-compose up -d
-```
-
-### Step 5: Access the Application
-
-<table width="100%" cellpadding="6" cellspacing="0">
-  <thead>
-    <tr>
-      <th align="left">Service</th>
-      <th align="left">URL</th>
-      <th align="left">Purpose</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><strong>Frontend UI</strong></td>
-      <td><a href="http://localhost:3000">http://localhost:3000</a></td>
-      <td>Main web interface for managing mock APIs</td>
-    </tr>
-    <tr>
-      <td><strong>Backend API</strong></td>
-      <td><a href="http://localhost:5000">http://localhost:5000</a></td>
-      <td>RESTful API endpoints</td>
-    </tr>
-    <tr>
-      <td><strong>API Docs</strong></td>
-      <td><a href="http://localhost:5000/docs">http://localhost:5000/docs</a></td>
-      <td>FastAPI OpenAPI documentation</td>
-    </tr>
-  </tbody>
-</table>
-
----
-
-## 📁 Detailed Project Structure
-
-### Root Directory Layout
-
-```
-Mimic-Mock-Api-Best/
-├── 📂 src/                      # Source code directory
-│   ├── 📂 Mimic.API/            # Backend (FastAPI)
-│   └── 📂 Mimic.UI/             # Frontend (Vue 3 + TypeScript)
-│
-├── 📂 setups/                   # Setup and initialization scripts
-│   └── setup.sh                 # Automated setup wizard
-│
-├── 📂 data/                     # Persistent data storage (auto-created)
-│   └── (mock API data files)
-│
-├── 📄 docker-compose.yml        # Docker orchestration configuration
-├── 📄 .env.examplle            # Environment variables template
-├── 📄 .env                      # Your local environment config (git-ignored)
-├── 📄 .gitignore                # Git ignore rules
-├── 📄 .gitattributes            # Git line-ending configuration
-├── 📄 LICENSE                   # Project license
-└── 📄 README.md                 # This file
+docker compose -f docker-compose.yml -f docker-compose.prod.yml up --build
 ```
 
 ---
 
-### 🎯 Backend Structure (`src/Mimic.API/`)
+## A first walkthrough
 
-<details open>
-<summary><strong>📂 Click to expand backend structure</strong></summary>
+1. Open the app. The sidebar has a **Getting started** collection.
+2. Click **List users**, then **Send**. You get `200 OK`, the timing, the size,
+   and `3/3 tests` passing.
+3. Open the **Tests** tab to see the assertions that just ran. Change one to
+   expect something wrong and send again — it turns red and tells you what it
+   got instead.
+4. Go to **Runner**, set **Iterations** to `5`, and press **Run collection**.
+   It sends every request five times and reports each iteration separately.
+5. Go to **Mocks** to see the fake endpoints being called, and edit what they
+   return.
 
-```
-src/Mimic.API/
-├── 📂 app/
-│   ├── 📂 api/
-│   │   ├── deps.py              # Dependency providers
-│   │   └── 📂 routes/
-│   │       ├── health.py        # Health check endpoints
-│   │       └── mocks.py         # Mock CRUD + mock responder
-│   ├── 📂 core/
-│   │   └── config.py            # Environment-based settings
-│   ├── 📂 db/
-│   │   └── store.py             # JSON-backed mock storage
-│   ├── 📂 schemas/
-│   │   └── mock.py              # Pydantic models
-│   ├── __init__.py
-│   └── main.py                  # FastAPI app entry point
-│
-├── 📄 requirements.txt          # Python dependencies
-└── 📄 Mimic.API.http            # HTTP request samples
-```
-
-#### 📖 Key Files Explained
-
-<table width="100%" cellpadding="6" cellspacing="0">
-  <thead>
-    <tr>
-      <th align="left">File</th>
-      <th align="left">Purpose</th>
-      <th align="left">When to Modify</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><code>app/main.py</code></td>
-      <td>FastAPI app startup and router wiring</td>
-      <td>Adding middleware, routers, app-level settings</td>
-    </tr>
-    <tr>
-      <td><code>app/db/store.py</code></td>
-      <td>JSON-backed mock persistence layer</td>
-      <td>Changing storage strategy or indexes</td>
-    </tr>
-    <tr>
-      <td><code>app/schemas/mock.py</code></td>
-      <td>Pydantic models for request/response</td>
-      <td>Adding fields or validation rules</td>
-    </tr>
-    <tr>
-      <td><code>requirements.txt</code></td>
-      <td>Python dependencies</td>
-      <td>Adding/updating packages</td>
-    </tr>
-    <tr>
-      <td><code>Mimic.API.http</code></td>
-      <td>Manual API testing file</td>
-      <td>Testing new endpoints in VS Code</td>
-    </tr>
-  </tbody>
-</table>
-
-</details>
+Keyboard: `Ctrl/Cmd + Enter` sends, `Ctrl/Cmd + S` saves.
 
 ---
 
-### 🎨 Frontend Structure (`src/Mimic.UI/`)
-
-<details open>
-<summary><strong>📂 Click to expand frontend structure</strong></summary>
-
-```
-src/Mimic.UI/
-├── 📂 src/                      # Main source code
-│   ├── 📂 components/           # Reusable Vue components
-│   ├── 📂 views/                # Page-level components
-│   ├── 📂 assets/               # Static assets (images, styles)
-│   ├── 📂 router/               # Vue Router configuration
-│   ├── 📂 stores/               # State management (Pinia/Vuex)
-│   ├── 📂 services/             # API service layer
-│   ├── 📂 types/                # TypeScript type definitions
-│   ├── 📄 App.vue               # Root Vue component
-│   └── 📄 main.ts               # Application entry point
-│
-├── 📂 public/                   # Static public assets
-│   └── favicon.ico
-│
-├── 📂 .vscode/                  # VS Code workspace settings
-│   └── extensions.json
-│
-├── 📄 index.html                # HTML entry point
-├── 📄 package.json              # 🔥 Node dependencies and scripts
-│   │                            # Purpose: Project dependencies, npm scripts
-│   │                            # What to modify: Add packages, update scripts
-│   │
-├── 📄 yarn.lock                 # Yarn dependency lock file
-├── 📄 vite.config.ts            # ⚙️ Vite build configuration
-│   │                            # Purpose: Build settings, plugins, proxies
-│   │                            # What to modify: Add plugins, configure proxy
-│   │
-├── 📄 tsconfig.json             # TypeScript root configuration
-├── 📄 tsconfig.app.json         # App-specific TypeScript config
-├── 📄 tsconfig.node.json        # Node-specific TypeScript config
-├── 📄 .gitignore                # Git ignore rules for frontend
-└── 📄 README.md                 # Frontend-specific documentation
-```
-
-#### 📖 Key Files Explained
-
-<table width="100%" cellpadding="6" cellspacing="0">
-  <thead>
-    <tr>
-      <th align="left">File</th>
-      <th align="left">Purpose</th>
-      <th align="left">When to Modify</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><code>package.json</code></td>
-      <td>Dependencies and npm scripts</td>
-      <td>Adding libraries, modifying build scripts</td>
-    </tr>
-    <tr>
-      <td><code>vite.config.ts</code></td>
-      <td>Vite build tool configuration</td>
-      <td>Add plugins, configure proxy, optimize builds</td>
-    </tr>
-    <tr>
-      <td><code>main.ts</code></td>
-      <td>Vue app initialization</td>
-      <td>Register global plugins, components, directives</td>
-    </tr>
-    <tr>
-      <td><code>App.vue</code></td>
-      <td>Root Vue component</td>
-      <td>Global layout, navigation, app-wide logic</td>
-    </tr>
-    <tr>
-      <td><code>tsconfig.json</code></td>
-      <td>TypeScript compiler options</td>
-      <td>Strict mode, path aliases, module resolution</td>
-    </tr>
-  </tbody>
-</table>
-
-#### 📂 Directory Purposes
-
-<table width="100%" cellpadding="6" cellspacing="0">
-  <thead>
-    <tr>
-      <th align="left">Directory</th>
-      <th align="left">Purpose</th>
-      <th align="left">Example Contents</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><code>src/components/</code></td>
-      <td>Reusable UI components</td>
-      <td>Button.vue, Modal.vue, FormInput.vue</td>
-    </tr>
-    <tr>
-      <td><code>src/views/</code></td>
-      <td>Page-level components</td>
-      <td>Home.vue, Dashboard.vue, MockEditor.vue</td>
-    </tr>
-    <tr>
-      <td><code>src/services/</code></td>
-      <td>API communication layer</td>
-      <td>mockApi.ts, httpClient.ts</td>
-    </tr>
-    <tr>
-      <td><code>src/stores/</code></td>
-      <td>Global state management</td>
-      <td>mockStore.ts, userStore.ts (Pinia)</td>
-    </tr>
-    <tr>
-      <td><code>src/types/</code></td>
-      <td>TypeScript interfaces/types</td>
-      <td>Mock.ts, ApiResponse.ts</td>
-    </tr>
-    <tr>
-      <td><code>src/router/</code></td>
-      <td>Vue Router setup</td>
-      <td>index.ts (route definitions)</td>
-    </tr>
-  </tbody>
-</table>
-
-</details>
-
----
-
-### 🔧 Setup Scripts (`setups/`)
-
-<details open>
-<summary><strong>📂 Click to expand setup directory</strong></summary>
-
-```
-setups/
-└── 📄 setup.sh                  # 🚀 Automated setup wizard
-    │
-    │ Purpose:
-    │ - Check Docker permissions
-    │ - Verify dependencies (Python packages, node_modules)
-    │ - Install missing dependencies
-    │ - Start the application
-    │
-    │ Features:
-    │ ✅ Smart Docker permission detection (sudo/non-sudo)
-    │ ✅ Color-coded output for clarity
-    │ ✅ Interactive prompts for user decisions
-    │ ✅ Automatic dependency restoration
-    │
-    │ Usage:
-    │   chmod +x setups/setup.sh
-    │   ./setups/setup.sh
-```
-
-#### 🎯 Setup Script Flow
-
-```mermaid
-graph TD
-    A[Start setup.sh] --> B{Docker accessible?}
-    B -->|Yes| C[Check dependencies]
-    B -->|No, with sudo| D[Use sudo mode]
-    B -->|No, no sudo| E[Exit with error]
-    D --> C
-    C --> F{Dependencies missing?}
-    F -->|Yes| G[Prompt to install]
-    F -->|No| H[Dependencies OK]
-    G --> I{User confirms?}
-    I -->|Yes| J[docker compose build]
-    I -->|No| E
-    J --> K[pip install -r requirements.txt]
-    K --> L[yarn install]
-    L --> H
-    H --> M[Prompt to start]
-    M --> N{User confirms?}
-    N -->|Yes| O[docker compose up]
-    N -->|No| P[Exit]
-    O --> P
-```
-
-</details>
-
----
-
-### 🐳 Docker Configuration
-
-<details open>
-<summary><strong>📂 Click to expand Docker configuration</strong></summary>
-
-#### `docker-compose.yml` Structure
-
-```yaml
-services:
-  # ============================================
-  # BACKEND SERVICE (FASTAPI)
-  # ============================================
-  mimic-api:
-    image: python:3.12-slim                      # Official Python image
-    container_name: mimic_api                   # Container name for easy access
-    working_dir: /app                           # Working directory inside container
-    ports:
-      - "5000:8080"                             # Host:Container port mapping
-    volumes:
-      - ./src/Mimic.API:/app                    # Mount source code (hot reload)
-      - ./data:/app/data                        # Mount data directory
-    command: sh -c "pip install --no-cache-dir -r requirements.txt && uvicorn app.main:app --host 0.0.0.0 --port 8080 --reload"
-    environment:
-      - APP_NAME=Mimic Mock API
-      - API_PREFIX=/api
-      - DATA_DIR=./data
-
-  # ============================================
-  # FRONTEND SERVICE (Vue 3 + Vite)
-  # ============================================
-  mimic-ui:
-    image: node:20-alpine                       # Lightweight Node.js image
-    container_name: mimic_ui                    # Container name
-    working_dir: /app                           # Working directory
-    ports:
-      - "3000:5173"                             # Vite default port
-    volumes:
-      - ./src/Mimic.UI:/app                     # Mount source code (HMR)
-    command: sh -c "yarn install && yarn dev --host"  # Install & start
-    depends_on:
-      - mimic-api                               # Start after backend
-```
-
-#### 🔑 Docker Compose Key Concepts
-
-<table width="100%" cellpadding="6" cellspacing="0">
-  <thead>
-    <tr>
-      <th align="left">Concept</th>
-      <th align="left">Purpose</th>
-      <th align="left">Example</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><strong>Services</strong></td>
-      <td>Define individual containers</td>
-      <td><code>mimic-api</code>, <code>mimic-ui</code></td>
-    </tr>
-    <tr>
-      <td><strong>Volumes</strong></td>
-      <td>Mount host directories into containers</td>
-      <td><code>./src/Mimic.API:/app</code> (enables hot reload)</td>
-    </tr>
-    <tr>
-      <td><strong>Ports</strong></td>
-      <td>Expose container ports to host</td>
-      <td><code>5000:8080</code> (access via localhost:5000)</td>
-    </tr>
-    <tr>
-      <td><strong>Environment</strong></td>
-      <td>Pass environment variables</td>
-      <td><code>APP_NAME=Mimic Mock API</code></td>
-    </tr>
-    <tr>
-      <td><strong>depends_on</strong></td>
-      <td>Control startup order</td>
-      <td>UI starts after API is ready</td>
-    </tr>
-  </tbody>
-</table>
-
-</details>
-
----
-
-## ⚙️ Configuration Guide
-
-### Environment Variables (`.env`)
-
-<details open>
-<summary><strong>🔑 Click to expand environment configuration</strong></summary>
-
-```env
-# ============================================
-# PORT CONFIGURATION
-# ============================================
-API_PORT=5000              # Backend API accessible at http://localhost:5000
-UI_PORT=3000               # Frontend UI accessible at http://localhost:3000
-
-# ============================================
-# DOCKER IMAGE VERSIONS
-# ============================================
-PYTHON_IMAGE=python:3.12-slim  # Python image for FastAPI
-NODE_IMAGE=node:20-alpine      # Node.js version (Alpine for size)
-
-# ============================================
-# APPLICATION CONFIGURATION
-# ============================================
-APP_NAME=Mimic Mock API
-API_PREFIX=/api
-DATA_DIR=./data
-```
-
-#### 📖 Configuration Options
-
-<table width="100%" cellpadding="6" cellspacing="0">
-  <thead>
-    <tr>
-      <th align="left">Variable</th>
-      <th align="left">Default</th>
-      <th align="left">Purpose</th>
-      <th align="left">Valid Values</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><code>API_PORT</code></td>
-      <td>5000</td>
-      <td>Backend API port on host machine</td>
-      <td>Any available port (1024-65535)</td>
-    </tr>
-    <tr>
-      <td><code>UI_PORT</code></td>
-      <td>3000</td>
-      <td>Frontend UI port on host machine</td>
-      <td>Any available port (1024-65535)</td>
-    </tr>
-    <tr>
-      <td><code>PYTHON_IMAGE</code></td>
-      <td>python:3.12-slim</td>
-      <td>FastAPI Python image</td>
-      <td>Any Python image tag</td>
-    </tr>
-    <tr>
-      <td><code>NODE_IMAGE</code></td>
-      <td>node:20-alpine</td>
-      <td>Node.js Docker image</td>
-      <td>node:18-alpine, node:20, etc.</td>
-    </tr>
-    <tr>
-      <td><code>APP_NAME</code></td>
-      <td>Mimic Mock API</td>
-      <td>Application display name</td>
-      <td>Any string</td>
-    </tr>
-    <tr>
-      <td><code>API_PREFIX</code></td>
-      <td>/api</td>
-      <td>Prefix for API routes</td>
-      <td>Any URL path</td>
-    </tr>
-    <tr>
-      <td><code>DATA_DIR</code></td>
-      <td>./data</td>
-      <td>Path to JSON storage directory</td>
-      <td>Any writable path</td>
-    </tr>
-  </tbody>
-</table>
-
-#### 🎯 Common Configuration Scenarios
-
-**Scenario 1: Port Conflict Resolution**
-```env
-# Change ports if 5000/3000 are already in use
-API_PORT=5001
-UI_PORT=3001
-```
-
-**Scenario 2: Using Different Python Version**
-```env
-# Use Python 3.11 instead of 3.12
-PYTHON_IMAGE=python:3.11-slim
-```
-
-**Scenario 3: Production Ports**
-```env
-API_PORT=80
-UI_PORT=443
-```
-
-</details>
-
----
-
-## 💻 Development Workflows
-
-### 🔨 Backend Development Workflow
-
-<details open>
-<summary><strong>📂 Click to expand backend workflow</strong></summary>
-
-#### Starting Backend Only
-
-```bash
-# Start only the API service
-docker-compose up mimic-api
-
-# Or in detached mode
-docker-compose up -d mimic-api
-```
-
-#### Viewing Backend Logs
-
-```bash
-# Follow logs in real-time
-docker-compose logs -f mimic-api
-
-# View last 100 lines
-docker-compose logs --tail=100 mimic-api
-```
-
-#### Accessing Backend Container
-
-```bash
-# Open shell in running container
-docker exec -it mimic_api sh
-
-# Inside container, you can:
-python --version           # Check Python version
-pip list                   # List installed packages
-```
-
-#### Adding New Python Packages
-
-```bash
-# Option 1: Inside container
-docker exec -it mimic_api sh
-pip install requests
-pip freeze > requirements.txt
-
-# Option 2: From host (without Docker)
-cd src/Mimic.API
-# Add package to requirements.txt, then:
-docker-compose restart mimic-api
-```
-
-#### Hot Reload Behavior
-
-The backend uses `uvicorn --reload`, which automatically:
-- ✅ Detects Python file changes (.py)
-- ✅ Restarts the web server
-- ❌ Doesn't watch: requirements.txt (requires manual restart)
-
-```bash
-# If requirements.txt changed, restart:
-docker-compose restart mimic-api
-```
-
-</details>
-
----
-
-### 🎨 Frontend Development Workflow
-
-<details open>
-<summary><strong>📂 Click to expand frontend workflow</strong></summary>
-
-#### Starting Frontend Only
-
-```bash
-# Start only the UI service
-docker-compose up mimic-ui
-
-# Or in detached mode
-docker-compose up -d mimic-ui
-```
-
-#### Viewing Frontend Logs
-
-```bash
-# Follow Vite dev server logs
-docker-compose logs -f mimic-ui
-
-# Check for compilation errors
-docker-compose logs --tail=50 mimic-ui
-```
-
-#### Accessing Frontend Container
-
-```bash
-# Open shell in running container
-docker exec -it mimic_ui sh
-
-# Inside container, you can:
-yarn --version             # Check Yarn version
-yarn add axios             # Add packages
-yarn build                 # Production build
-```
-
-#### Adding New NPM Packages
-
-```bash
-# Option 1: Inside container (recommended)
-docker exec -it mimic_ui sh
-yarn add axios
-yarn add -D @types/axios   # TypeScript types
-
-# Option 2: From host
-cd src/Mimic.UI
-yarn add axios
-docker-compose restart mimic-ui
-```
-
-#### Hot Module Replacement (HMR)
-
-Vite provides instant HMR for:
-- ✅ .vue files (components)
-- ✅ .ts/.js files
-- ✅ .css files
-- ✅ Assets in src/
-
-```bash
-# No restart needed! Changes appear instantly in browser
-```
-
-#### Building for Production
-
-```bash
-# Build optimized production bundle
-docker-compose run --rm mimic-ui yarn build
-
-# Output will be in src/Mimic.UI/dist/
-```
-
-</details>
-
----
-
-### 🔄 Full-Stack Development
-
-<details open>
-<summary><strong>📂 Click to expand full-stack workflow</strong></summary>
-
-#### Start Everything
-
-```bash
-# Start all services
-docker-compose up
-
-# Or in detached mode
-docker-compose up -d
-
-# View all logs
-docker-compose logs -f
-```
-
-#### Stop All Services
-
-```bash
-# Stop gracefully (preserves data)
-docker-compose down
-
-# Stop and remove volumes (cleans everything)
-docker-compose down -v
-```
-
-#### Restart Individual Service
-
-```bash
-# Restart just the backend
-docker-compose restart mimic-api
-
-# Restart just the frontend
-docker-compose restart mimic-ui
-```
-
-#### Rebuild After Major Changes
-
-```bash
-# Rebuild all images
-docker-compose up --build
-
-# Rebuild specific service
-docker-compose up --build mimic-api
-```
-
-</details>
-
----
-
-### 🚫 Running Without Docker
+## Running without Docker
 
 <details>
-<summary><strong>📂 Click to expand non-Docker setup</strong></summary>
-
-#### Prerequisites
-
-Install these on your host machine:
-- [Python 3.12+](https://www.python.org/downloads/)
-- [Node.js 20+](https://nodejs.org/)
-- [Yarn](https://yarnpkg.com/getting-started/install)
-
-#### Backend Setup
+<summary>Backend</summary>
 
 ```bash
-cd src/Mimic.API
-
-# Create virtual environment
-python -m venv .venv
-source .venv/bin/activate
-
-# Install dependencies
-pip install -r requirements.txt
-
-# Run in watch mode
-uvicorn app.main:app --host 0.0.0.0 --port 5000 --reload
+cd src/Mimic.API && python3 -m venv .venv && .venv/bin/pip install -r requirements.txt
 ```
-
-Backend will be available at: `http://localhost:5000`
-
-#### Frontend Setup
 
 ```bash
-cd src/Mimic.UI
+.venv/bin/uvicorn app.main:app --reload --port 5000
+```
+</details>
 
-# Install dependencies
-yarn install
+<details>
+<summary>Frontend</summary>
 
-# Start dev server
-yarn dev
-
-# Or build for production
-yarn build
+```bash
+cd src/Mimic.UI && yarn install && yarn dev
 ```
 
-Frontend will be available at: `http://localhost:5173` (Vite's default)
-
+The dev server proxies `/api` and `/mock` to `http://localhost:5000`. Override
+with `VITE_PROXY_TARGET` if your backend is elsewhere.
 </details>
 
 ---
 
-## 📖 API Usage Guide
+## Project layout
 
-### 🎯 For Testing Teams
-
-<details open>
-<summary><strong>📂 Click to expand API usage guide</strong></summary>
-
-#### Base URLs
-
-```plaintext
-Development:  http://localhost:5000
-Production:   https://your-domain.com
+```
+src/
+├── Mimic.API/                  FastAPI backend
+│   ├── app/
+│   │   ├── core/               settings, SSRF policy, middleware
+│   │   ├── db/                 SQLAlchemy models, engine, demo seed
+│   │   ├── schemas/            Pydantic request/response models
+│   │   ├── services/           executor, assertions, runner, matcher
+│   │   ├── api/routes/         the HTTP endpoints
+│   │   └── main.py             app wiring
+│   └── tests/                  pytest suite
+│
+└── Mimic.UI/                   Vue 3 + TypeScript frontend
+    ├── src/
+    │   ├── components/         UI building blocks
+    │   ├── views/              one per screen
+    │   ├── stores/             Pinia state
+    │   ├── services/api.ts     typed API client
+    │   └── styles/main.css     design tokens
+    └── e2e/                    Playwright tests
 ```
 
-#### Example Endpoints (Customize as Needed)
+### Endpoints
 
-```http
-# ============================================
-# MOCK ENDPOINT MANAGEMENT
-# ============================================
+The API is documented interactively at `/docs`. In short:
 
-# List all mock endpoints
-GET /api/mocks
-Response: 200 OK
-[
-  {
-    "id": "1",
-    "path": "/api/users",
-    "method": "GET",
-    "response": {...},
-    "status_code": 200
-  }
-]
-
-# Create new mock endpoint
-POST /api/mocks
-Content-Type: application/json
-{
-  "path": "/api/users",
-  "method": "GET",
-  "response": {"users": []},
-  "status_code": 200,
-  "delay": 0
-}
-
-# Get specific mock
-GET /api/mocks/{id}
-Response: 200 OK
-
-# Update mock endpoint
-PUT /api/mocks/{id}
-Content-Type: application/json
-{
-  "response": {"users": [{"id": 1, "name": "John"}]},
-  "status_code": 200
-}
-
-# Delete mock endpoint
-DELETE /api/mocks/{id}
-Response: 204 No Content
-
-# ============================================
-# CALLING MOCK ENDPOINTS
-# ============================================
-
-# Call your created mock
-GET /mock/api/users
-Response: 200 OK
-{"users": [{"id": 1, "name": "John"}]}
-```
-
-#### Testing with cURL
-
-```bash
-# Create a mock endpoint
-curl -X POST http://localhost:5000/api/mocks \
-  -H "Content-Type: application/json" \
-  -d '{
-    "path": "/api/products",
-    "method": "GET",
-    "response": {"products": [{"id": 1, "name": "Widget"}]},
-    "status_code": 200
-  }'
-
-# Call the mock endpoint
-curl http://localhost:5000/mock/api/products
-```
-
-#### Testing with Postman
-
-1. Import the provided Postman collection (if available)
-2. Set base URL to `http://localhost:5000`
-3. Create mock endpoints via `/api/mocks`
-4. Test them via `/mock/*` routes
-
-#### 🧪 Using for Integration Tests
-
-```typescript
-// Example Jest test using Mimic
-describe('User API Integration', () => {
-  beforeAll(async () => {
-    // Setup mock in Mimic
-    await fetch('http://localhost:5000/api/mocks', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        path: '/api/users',
-        method: 'GET',
-        response: { users: [{ id: 1, name: 'Test User' }] },
-        status_code: 200
-      })
-    });
-  });
-
-  test('should fetch users', async () => {
-    const response = await fetch('http://localhost:5000/mock/api/users');
-    const data = await response.json();
-    expect(data.users).toHaveLength(1);
-  });
-});
-```
-
-</details>
+| Method | Path | Purpose |
+|---|---|---|
+| `POST` | `/api/send` | Execute one request |
+| `POST` | `/api/run` | Run a collection, optionally looped |
+| `GET` | `/api/collections` | Every collection **with its folders and requests**, in one call |
+| `POST` | `/api/collections` | Create a collection |
+| `GET/POST` | `/api/mocks` | Mock definitions |
+| `GET/POST` | `/api/environments` | Variable sets |
+| `GET` | `/api/history` | Past executions |
+| `ANY` | `/mock/{path}` | Your configured mocks |
 
 ---
 
+## Design
 
-#### Viewing Detailed Logs
+The interface follows a written system rather than per-screen taste — see
+[docs/design/DESIGN-SYSTEM.md](docs/design/DESIGN-SYSTEM.md). Three rules
+drive everything:
 
-```bash
-# All services
-docker-compose logs
+1. **Monospace carries the interface.** Anything that is data — headings,
+   labels, paths, status codes, counts — is set in JetBrains Mono. Inter is
+   for prose only.
+2. **Colour means something, or it is not there.** Colour appears on HTTP
+   methods, pass/fail state, and the single accent. Nothing is tinted for
+   decoration.
+3. **State is a tinted chip, not a border.** Borders are for structure.
 
-# Specific service
-docker-compose logs mimic-api
-docker-compose logs mimic-ui
+Three themes ship, switchable from the header:
 
-# Follow logs in real-time
-docker-compose logs -f
-
-# Last N lines
-docker-compose logs --tail=100 mimic-api
-```
-
-#### Checking Service Health
-
-```bash
-# List running containers
-docker ps
-
-# Inspect specific container
-docker inspect mimic_api
-
-# Check resource usage
-docker stats
-```
-
-#### Complete Clean Reset
-
-```bash
-# Nuclear option: remove everything and start fresh
-docker-compose down -v
-docker system prune -a
-rm -rf src/Mimic.API/.venv src/Mimic.API/__pycache__
-rm -f src/Mimic.API/.deps_installed
-rm -rf src/Mimic.UI/node_modules
-docker-compose up --build
-```
-
-</details>
+| Theme | Character |
+|---|---|
+| **Paper** | Light and airy. The default. |
+| **Slate** | The same design, dark. |
+| **Terminal** | Near-black with a green cast, amber accent, denser controls. |
 
 ---
 
-## 🤝 Contributing
+## Performance
 
-<details open>
-<summary><strong>📂 Click to expand contribution guidelines</strong></summary>
-
-Contributions are welcome! Here's how to get started:
-
-### 1. Fork & Clone
+The hot paths are benchmarked rather than assumed. Run it yourself:
 
 ```bash
-# Fork the repository on GitHub, then:
-git clone https://github.com/YOUR-USERNAME/Mimic-Mock-Api-Best.git
-cd Mimic-Mock-Api-Best
+cd src/Mimic.API && .venv/bin/python -m tests.benchmark
 ```
 
-### 2. Create Feature Branch
+With 200 mocks and 10 collections of 20 requests:
 
-```bash
-git checkout -b feature/amazing-new-feature
-```
+| Operation | Before | After |
+|---|---|---|
+| Serve one mock | 5.16 ms | **1.54 ms** (648 ops/s) |
+| Load the sidebar | 35.7 ms | **9.9 ms** |
 
-### 3. Make Changes
+Two changes did most of that:
 
-- Follow existing code style
-- Add tests for new features
-- Update documentation if needed
+- **Mock definitions are cached in memory**, pre-split into path segments,
+  and hit counters are buffered and written in one bulk statement. Serving a
+  mock previously cost two database round trips *per request* — one to load
+  every mock, one to commit the counter.
+- **Collections load in a single call** with eager-loaded relations. The UI
+  used to fetch an index and then each collection separately.
 
-### 4. Commit Changes
-
-```bash
-git add .
-git commit -m "feat: add amazing new feature"
-
-# Use conventional commit messages:
-# feat: new feature
-# fix: bug fix
-# docs: documentation changes
-# style: formatting changes
-# refactor: code refactoring
-# test: adding tests
-# chore: maintenance tasks
-```
-
-### 5. Push & Create Pull Request
-
-```bash
-git push origin feature/amazing-new-feature
-```
-
-Then open a Pull Request on GitHub.
-
-### Code Review Checklist
-
-- [ ] Code follows project structure
-- [ ] Tests pass locally
-- [ ] Documentation updated
-- [ ] No console errors
-- [ ] Docker setup still works
-
-</details>
+Note: a union `response_model` and GZip middleware were both tried here and
+removed — they made things slower. Details are in the code comments.
 
 ---
 
-## 📝 License
+## Security
 
-This project is licensed under the terms specified in the [LICENSE](LICENSE) file.
+Mimic sends HTTP requests from the server on your behalf. That is a useful
+feature and a dangerous one, so it is fenced in:
+
+- **Only `http` and `https`.** `file://`, `gopher://` and the rest are refused.
+- **Cloud metadata is always blocked** — `169.254.169.254` and the IPv6
+  equivalent, in every configuration. That endpoint hands out cloud
+  credentials and there is no legitimate reason to reach it from here.
+- **Every redirect hop is re-checked.** A `302` pointing at a blocked address
+  is caught, not followed. This is the step most tools miss.
+- **Private networks are configurable.** Allowed by default because your dev
+  API is on localhost; set `ALLOW_PRIVATE_NETWORK=false` when hosting Mimic
+  where other people can reach it.
+- **Assertions are data, not code.** There is no `eval` anywhere, so importing
+  someone else's collection cannot execute anything.
+- **Credentials are masked in history** before they are written to disk.
+- **Rate limits, body-size caps, response-size caps, and timeouts** bound what
+  any single request or run can cost.
+
+Mimic has no login. It is built to run on your own machine or your own
+network. If you expose it publicly, put it behind your own authentication and
+set `ALLOW_PRIVATE_NETWORK=false`.
 
 ---
 
+## Tests
+
+```bash
+cd src/Mimic.API && .venv/bin/python -m pytest
+```
+
+```bash
+cd src/Mimic.UI && yarn test:e2e
+```
+
+The backend suite covers the SSRF policy, the assertion engine, mock matching,
+every endpoint, and the runner. The Playwright suite drives the real UI against
+the real API — nothing is stubbed, because the bugs worth catching live in the
+seam between them.
+
 ---
 
+## Configuration
+
+Everything is set through environment variables or `.env`; see
+[`.env.example`](.env.example) for the full annotated list. The defaults are
+chosen to work with no configuration at all.
+
+---
+
+## Contributing
+
+See [docs/developer/CONTRIBUTING.md](docs/developer/CONTRIBUTING.md).

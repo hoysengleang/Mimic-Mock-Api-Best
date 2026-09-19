@@ -1,30 +1,55 @@
+
+
 services:
-  # Backend (FastAPI)
   mimic-api:
-    image: ${PYTHON_IMAGE:-python:3.12-slim}
+    build:
+      context: ./src/Mimic.API
+      target: dev
     container_name: mimic_api
-    working_dir: /app
     ports:
       - "${API_PORT:-5000}:8080"
     volumes:
-      - ./src/Mimic.API:/app
-      - ./data:/app/data
-    command: sh -c "pip install --no-cache-dir -r requirements.txt && uvicorn app.main:app --host 0.0.0.0 --port 8080 --reload"
+      - ./src/Mimic.API/app:/app/app
+      - mimic-data:/app/data
     environment:
-      - APP_NAME=${APP_NAME:-Mimic Mock API}
-      - API_PREFIX=${API_PREFIX:-/api}
-      - DATA_DIR=${DATA_DIR:-./data}
-      - PYTHONUNBUFFERED=1
+      APP_NAME: ${APP_NAME:-Mimic}
+      API_PREFIX: ${API_PREFIX:-/api}
+      DATA_DIR: /app/data
+      DEBUG: ${DEBUG:-false}
+      SEED_DEMO_DATA: ${SEED_DEMO_DATA:-true}
+      ALLOW_PRIVATE_NETWORK: ${ALLOW_PRIVATE_NETWORK:-true}
+      RATE_LIMIT_ENABLED: ${RATE_LIMIT_ENABLED:-true}
+      CORS_ORIGINS: ${CORS_ORIGINS:-http://localhost:3000,http://127.0.0.1:3000}
+    restart: unless-stopped
+    healthcheck:
+      test:
+        - CMD
+        - python
+        - -c
+        - "import urllib.request,sys; sys.exit(0 if urllib.request.urlopen('http://127.0.0.1:8080/api/health', timeout=2).status==200 else 1)"
+      interval: 15s
+      timeout: 5s
+      retries: 5
+      start_period: 15s
 
-  # Frontend (Vue 3 + Yarn)
   mimic-ui:
-    image: ${NODE_IMAGE:-node:20-alpine}
+    build:
+      context: ./src/Mimic.UI
+      target: dev
     container_name: mimic_ui
-    working_dir: /app
     ports:
       - "${UI_PORT:-3000}:5173"
     volumes:
-      - ./src/Mimic.UI:/app
-    command: sh -c "yarn install && yarn dev --host"
+      - ./src/Mimic.UI/src:/app/src
+      - ./src/Mimic.UI/index.html:/app/index.html
+      - ./src/Mimic.UI/vite.config.ts:/app/vite.config.ts
+    environment:
+      # Inside the compose network the API is reachable by service name.
+      VITE_PROXY_TARGET: http://mimic-api:8080
     depends_on:
-      - mimic-api
+      mimic-api:
+        condition: service_healthy
+    restart: unless-stopped
+
+volumes:
+  mimic-data:

@@ -1,2 +1,22 @@
-fastapi
-uvicorn[standard]
+# Mimic API — runtime dependencies (pinned for reproducible builds)
+
+# Web framework
+fastapi==0.141.1
+uvicorn[standard]==0.53.0
+python-multipart==0.0.32
+
+# Configuration & validation
+pydantic==2.13.5
+pydantic-settings==2.15.0
+
+# Persistence
+SQLAlchemy==2.0.54
+
+# Outbound HTTP (the request execution engine)
+httpx==0.28.1
+
+# Rate limiting
+slowapi==0.1.10
+
+# Declarative assertions over JSON response bodies
+jsonpath-ng==1.8.0

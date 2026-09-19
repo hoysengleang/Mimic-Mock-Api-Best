@@ -1,59 +1,114 @@
-<div align="center">
-  <h1>🛠️ Contributing to Mimic</h1>
-  <p>Help us build the best mocking infrastructure for the developer community.</p>
-</div>
+# Contributing to Mimic
 
-<hr />
-
-## 🏗️ Technical Standards
-
-<table>
-  <tr>
-    <th>Backend (FastAPI)</th>
-    <th>Frontend (Vue 3)</th>
-
-  </tr>
-  <tr>
-    <td>
-      <ul>
-        <li>Keep routers in <code>app/api/routes</code></li>
-        <li>Pydantic schemas live in <code>app/schemas</code></li>
-        <li>Use snake_case for functions and variables</li>
-        <li>Add type hints for public APIs</li>
-      </ul>
-    </td>
-    <td>
-      <ul>
-        <li>Use <b>script setup</b> syntax</li>
-        <li>TypeScript for all components</li>
-        <li>Pinia for state management</li>
-        <li>Responsive CSS standards</li>
-      </ul>
-    </td>
-  </tr>
-</table>
+Thanks for helping. This document is short on purpose — the parts that are
+easy to get wrong are written down, and nothing else.
 
 ---
 
-## 🌿 Contribution Workflow
+## Getting set up
 
-### 1. Find Your Task And Structure
+```bash
+cp .env.example .env && docker compose up --build
+```
 
-Check the <b><a href="https://github.com/hoysengleang/Mimic-Mock-Api-Best/projects">Project Board</a></b> for <b>"Todo"</b> items.
+Or without Docker, in two terminals:
 
-### 2. Development Steps
+```bash
+cd src/Mimic.API && python3 -m venv .venv && .venv/bin/pip install -r requirements-dev.txt && .venv/bin/uvicorn app.main:app --reload --port 5000
+```
 
-1. **Fork** the repo to your profile.
-2. **Clone** and create a feature branch: `git checkout -b feat/your-feature`.
-3. **Setup**: Run <code>./setups/setup.sh</code> to configure your `.env`.
-4. **Test**: Run <code>docker compose up</code> to verify changes.
-
-### 3. Submission
-
-Open a **Pull Request** to <code>hoysengleang/main</code> and link the issue number (e.g., "Closes #10").
+```bash
+cd src/Mimic.UI && yarn install && yarn dev
+```
 
 ---
 
-<div align="center">
-  <p>Questions? <a href="https://github.com/hoysengleang/Mimic-Mock-Api-Best/issues">Open an Issue</a></p>
-</div>
+## Before you open a pull request
+
+All three must pass.
+
+```bash
+cd src/Mimic.API && .venv/bin/python -m pytest
+```
+
+```bash
+cd src/Mimic.UI && yarn typecheck && yarn vite build
+```
+
+```bash
+cd src/Mimic.UI && yarn test:e2e
+```
+
+The end-to-end suite needs the API running on port 5000. It drives the real
+UI against the real backend — nothing is stubbed, because the bugs worth
+catching live in the seam between them.
+
+---
+
+## Backend conventions
+
+**Structure.** Routers in `app/api/routes`, Pydantic schemas in
+`app/schemas`, SQLAlchemy models in `app/db/models.py`, and anything with
+logic in `app/services`. A route function should read as: validate, call a
+service, return. If a route is making decisions, that logic belongs in a
+service where it can be unit-tested.
+
+**Style.** `snake_case`, type hints on anything public, `from __future__
+import annotations` at the top.
+
+**Things that will get a PR sent back:**
+
+- **Adding `eval`, `exec`, or any user-supplied code execution.** Assertions
+  are deliberately declarative data. A collection someone downloads must
+  never be able to run anything. If a feature seems to need scripting,
+  open an issue first — the answer is usually a new declarative operator.
+- **Sending an outbound request that bypasses
+  `app/core/security.py`.** Every URL, including every redirect hop, goes
+  through `validate_outbound_url`. This is what stops Mimic being an SSRF
+  proxy.
+- **Writing credentials to the database unredacted.** Anything persisted
+  passes through `redact_headers` first.
+- **Unbounded work.** New loops, fetches and queries need a limit. The
+  existing ones are in `app/core/config.py`.
+
+**Performance.** The mock responder is a hot path. If you touch
+`app/api/routes/serve.py`, `app/services/matcher.py`, or
+`app/services/mock_registry.py`, run the benchmark before and after:
+
+```bash
+cd src/Mimic.API && .venv/bin/python -m tests.benchmark
+```
+
+Claims about performance should come with numbers. Two optimisations in this
+codebase were reverted because measuring showed they made things slower.
+
+---
+
+## Frontend conventions
+
+**Structure.** Views in `src/views` (one per screen), reusable pieces in
+`src/components`, state in `src/stores` (Pinia), and all HTTP through
+`src/services/api.ts`. Components should not call `fetch` directly.
+
+**Style.** `<script setup lang="ts">`, TypeScript everywhere, no `any`.
+
+**Design.** Read [the design system](../design/DESIGN-SYSTEM.md) before
+adding UI. The short version:
+
+- Monospace for data, Inter for prose.
+- Colour only for HTTP methods, state, and the one accent.
+- Semantic tokens only — no raw hex, no magic pixel values.
+- No emoji as icons; add SVGs to `components/common/icons.ts`.
+- Check all three themes. Terminal catches hard-coded assumptions.
+
+---
+
+## Commits and pull requests
+
+Use a conventional prefix — `feat:`, `fix:`, `docs:`, `refactor:`,
+`test:`, `perf:`.
+
+In the pull request, say what changed and why. If it touches security or
+performance, say how you verified it. Link the issue (`Closes #12`).
+
+Questions: [open an issue](https://github.com/hoysengleang/Mimic-Mock-Api-Best/issues).

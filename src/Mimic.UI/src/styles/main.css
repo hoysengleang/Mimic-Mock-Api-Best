@@ -1,0 +1,522 @@
+/* ==========================================================================
+   Mimic — interface foundation
+   --------------------------------------------------------------------------
+   Three rules:
+
+   1. Monospace carries the interface. Headings, labels, counts, paths, status
+      codes — anything that is data — is set in JetBrains Mono. Inter is kept
+      for prose only. A tool that is entirely about HTTP should look like it.
+
+   2. One saturated accent, everything else neutral. Colour means something
+      here: HTTP methods, pass/fail, and the single accent on the primary
+      action. Nothing is tinted for decoration.
+
+   3. Light is the default. The app is bright and airy by default, with a
+      real dark theme for people who want it — not a dark app with a
+      washed-out light mode bolted on.
+   ========================================================================== */
+
+:root {
+  /* --- Type ------------------------------------------------------------- */
+  --font-sans: 'Inter Variable', ui-sans-serif, system-ui, -apple-system,
+               'Segoe UI', sans-serif;
+  --font-mono: 'JetBrains Mono Variable', ui-monospace, SFMono-Regular,
+               Menlo, Consolas, monospace;
+
+  --text-2xs:  0.6875rem;
+  --text-xs:   0.75rem;
+  --text-sm:   0.8125rem;
+  --text-base: 0.875rem;
+  --text-lg:   1rem;
+  --text-xl:   1.25rem;
+  --text-2xl:  1.625rem;
+
+  --leading-tight: 1.3;
+  --leading:       1.6;
+
+  --tracking-tight: -0.02em;
+  --tracking-mono:  -0.03em;
+  --tracking-label:  0.07em;
+
+  /* --- HTTP methods ----------------------------------------------------- */
+  --method-get:     #1a7f37;
+  --method-post:    #9a6700;
+  --method-put:     #0969da;
+  --method-patch:   #8250df;
+  --method-delete:  #cf222e;
+  --method-head:    #1b7c83;
+  --method-options: #636c76;
+
+  /* --- State ------------------------------------------------------------ */
+  --ok:     #1a7f37;
+  --warn:   #9a6700;
+  --danger: #cf222e;
+  --info:   #0969da;
+
+  /* --- Space — generous, on a 4px rhythm -------------------------------- */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.5rem;
+  --space-6: 2rem;
+  --space-8: 3rem;
+  --space-10: 4rem;
+
+  /* Softer than a typical dense tool. Panels breathe. */
+  --radius-sm: 6px;
+  --radius:    8px;
+  --radius-lg: 12px;
+  --radius-xl: 16px;
+  --radius-pill: 999px;
+
+  --transition: 130ms cubic-bezier(0.2, 0, 0.2, 1);
+
+  --sidebar-width: 276px;
+  --header-height: 52px;
+}
+
+/* --- Light (default) ----------------------------------------------------- */
+:root,
+:root[data-theme='light'] {
+  color-scheme: light;
+
+  --bg:             #f9fafb;
+  --surface:        #ffffff;
+  --surface-raised: #ffffff;
+  --surface-sunken: #f9fafb;
+  --surface-hover:  #f3f4f6;
+  --surface-active: #e5e7eb;
+
+  --border:        #e5e7eb;
+  --border-strong: #d1d5db;
+
+  --text:        #111827;
+  --text-muted:  #4b5563;
+  --text-subtle: #9ca3af;
+
+  --accent:          #2563eb;
+  --accent-hover:    #1d4ed8;
+  --accent-contrast: #ffffff;
+  --accent-soft:     #eff6ff;
+  --accent-ring:     rgba(37, 99, 235, 0.35);
+
+  /* Borderless tinted chips, the way state is shown throughout. */
+  --chip-ok-bg:     #ecfdf5;
+  --chip-ok-fg:     #047857;
+  --chip-warn-bg:   #fffbeb;
+  --chip-warn-fg:   #b45309;
+  --chip-danger-bg: #fef2f2;
+  --chip-danger-fg: #b91c1c;
+  --chip-info-bg:   #eff6ff;
+  --chip-info-fg:   #1d4ed8;
+  --chip-mute-bg:   #f3f4f6;
+  --chip-mute-fg:   #4b5563;
+
+  --shadow-sm: 0 1px 2px rgba(16, 24, 40, 0.05);
+  --shadow:    0 1px 3px rgba(16, 24, 40, 0.08), 0 1px 2px rgba(16, 24, 40, 0.04);
+  --shadow-lg: 0 12px 32px rgba(16, 24, 40, 0.12);
+
+  --code-bg: #fcfcfd;
+
+  --logo-tile:   #111827;
+  --logo-signal: #ffffff;
+}
+
+/* --- Dark ---------------------------------------------------------------- */
+:root[data-theme='dark'] {
+  color-scheme: dark;
+
+  --bg:             #0b0d10;
+  --surface:        #111418;
+  --surface-raised: #171b21;
+  --surface-sunken: #0b0d10;
+  --surface-hover:  #1c2128;
+  --surface-active: #232930;
+
+  --border:        #1f242b;
+  --border-strong: #2d333b;
+
+  --text:        #e6edf3;
+  --text-muted:  #9198a1;
+  --text-subtle: #6a727c;
+
+  --accent:          #4d9fff;
+  --accent-hover:    #78b4ff;
+  --accent-contrast: #05070a;
+  --accent-soft:     rgba(77, 159, 255, 0.14);
+  --accent-ring:     rgba(77, 159, 255, 0.4);
+
+  --chip-ok-bg:     rgba(63, 185, 80, 0.14);
+  --chip-ok-fg:     #56d364;
+  --chip-warn-bg:   rgba(210, 153, 34, 0.15);
+  --chip-warn-fg:   #e3b341;
+  --chip-danger-bg: rgba(248, 81, 73, 0.14);
+  --chip-danger-fg: #ff7b72;
+  --chip-info-bg:   rgba(88, 166, 255, 0.14);
+  --chip-info-fg:   #79c0ff;
+  --chip-mute-bg:   rgba(255, 255, 255, 0.06);
+  --chip-mute-fg:   #9198a1;
+
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.5);
+  --shadow:    0 4px 12px rgba(0, 0, 0, 0.45);
+  --shadow-lg: 0 20px 48px rgba(0, 0, 0, 0.6);
+
+  --code-bg: #0d1014;
+
+  --logo-tile:   #e6edf3;
+  --logo-signal: #0b0d10;
+
+  --method-get:     #3fb950;
+  --method-post:    #d29922;
+  --method-put:     #58a6ff;
+  --method-patch:   #bc8cff;
+  --method-delete:  #f85149;
+  --method-head:    #39c5cf;
+  --method-options: #8b949e;
+
+  --ok:     #3fb950;
+  --warn:   #d29922;
+  --danger: #f85149;
+  --info:   #58a6ff;
+}
+
+/* --- Terminal ------------------------------------------------------------
+   A third, deliberately opinionated direction: near-black with a green
+   phosphor cast, higher contrast, and amber as the accent. Where Paper is
+   calm and Slate is neutral, this one is a console. Offered as a real
+   alternative rather than a tint of the dark theme.
+   -------------------------------------------------------------------------- */
+:root[data-theme='terminal'] {
+  color-scheme: dark;
+
+  --bg:             #07090a;
+  --surface:        #0c1011;
+  --surface-raised: #111617;
+  --surface-sunken: #050707;
+  --surface-hover:  #161d1e;
+  --surface-active: #1d2526;
+
+  --border:        #18211f;
+  --border-strong: #26332f;
+
+  --text:        #d6e6dc;
+  --text-muted:  #85a094;
+  --text-subtle: #586d64;
+
+  --accent:          #ffb454;
+  --accent-hover:    #ffc880;
+  --accent-contrast: #07090a;
+  --accent-soft:     rgba(255, 180, 84, 0.13);
+  --accent-ring:     rgba(255, 180, 84, 0.45);
+
+  --chip-ok-bg:     rgba(88, 220, 130, 0.13);
+  --chip-ok-fg:     #58dc82;
+  --chip-warn-bg:   rgba(255, 180, 84, 0.14);
+  --chip-warn-fg:   #ffb454;
+  --chip-danger-bg: rgba(255, 106, 106, 0.14);
+  --chip-danger-fg: #ff6a6a;
+  --chip-info-bg:   rgba(95, 200, 220, 0.13);
+  --chip-info-fg:   #5fc8dc;
+  --chip-mute-bg:   rgba(214, 230, 220, 0.06);
+  --chip-mute-fg:   #85a094;
+
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.6);
+  --shadow:    0 4px 12px rgba(0, 0, 0, 0.55);
+  --shadow-lg: 0 20px 48px rgba(0, 0, 0, 0.7);
+
+  --code-bg: #050808;
+
+  --logo-tile:   #58dc82;
+  --logo-signal: #07090a;
+
+  --method-get:     #58dc82;
+  --method-post:    #ffb454;
+  --method-put:     #5fc8dc;
+  --method-patch:   #c9a0ff;
+  --method-delete:  #ff6a6a;
+  --method-head:    #4fd6c4;
+  --method-options: #7d9188;
+
+  --ok:     #58dc82;
+  --warn:   #ffb454;
+  --danger: #ff6a6a;
+  --info:   #5fc8dc;
+}
+
+/* The console look is denser — tighten the rhythm a notch. */
+:root[data-theme='terminal'] .btn,
+:root[data-theme='terminal'] .input,
+:root[data-theme='terminal'] .select { height: 30px; }
+
+:root[data-theme='terminal'] .btn--icon { width: 30px; }
+
+/* --- Reset --------------------------------------------------------------- */
+*,
+*::before,
+*::after { box-sizing: border-box; }
+
+* { margin: 0; }
+
+html, body, #app { height: 100%; }
+
+body {
+  font-family: var(--font-sans);
+  font-size: var(--text-sm);
+  line-height: var(--leading);
+  color: var(--text);
+  background: var(--bg);
+  font-synthesis-weight: none;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-feature-settings: 'cv05' 1, 'ss03' 1;
+}
+
+/* Anything structural is monospace — this is the defining choice. */
+h1, h2, h3, h4 {
+  font-family: var(--font-mono);
+  font-weight: 600;
+  letter-spacing: var(--tracking-mono);
+  line-height: var(--leading-tight);
+}
+
+button, input, select, textarea { font: inherit; color: inherit; }
+button { cursor: pointer; background: none; border: none; }
+button:disabled { cursor: not-allowed; opacity: 0.4; }
+
+a { color: inherit; text-decoration: none; }
+a:hover { text-decoration: underline; text-underline-offset: 2px; }
+
+ul, ol { list-style: none; padding: 0; }
+
+svg { display: block; flex-shrink: 0; }
+
+:focus-visible {
+  outline: 2px solid var(--accent-ring);
+  outline-offset: 1px;
+  border-radius: var(--radius-sm);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* --- Scrollbars ---------------------------------------------------------- */
+* { scrollbar-width: thin; scrollbar-color: var(--border-strong) transparent; }
+::-webkit-scrollbar { width: 10px; height: 10px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb {
+  background: var(--border-strong);
+  border-radius: var(--radius-pill);
+  border: 3px solid transparent;
+  background-clip: content-box;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--text-subtle);
+  background-clip: content-box;
+}
+
+/* ==========================================================================
+   Primitives
+   ========================================================================== */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  height: 34px;
+  padding: 0 var(--space-4);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--surface);
+  color: var(--text);
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  font-weight: 500;
+  letter-spacing: var(--tracking-mono);
+  white-space: nowrap;
+  box-shadow: var(--shadow-sm);
+  transition: background var(--transition), border-color var(--transition),
+              color var(--transition), box-shadow var(--transition);
+}
+.btn:hover:not(:disabled) { background: var(--surface-hover); border-color: var(--border-strong); }
+.btn:active:not(:disabled) { background: var(--surface-active); box-shadow: none; }
+
+.btn--primary {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--accent-contrast);
+  font-weight: 600;
+}
+.btn--primary:hover:not(:disabled) {
+  background: var(--accent-hover);
+  border-color: var(--accent-hover);
+}
+
+.btn--danger { color: var(--chip-danger-fg); }
+.btn--danger:hover:not(:disabled) {
+  background: var(--chip-danger-bg);
+  border-color: color-mix(in srgb, var(--danger) 40%, transparent);
+}
+
+.btn--ghost {
+  background: transparent;
+  border-color: transparent;
+  box-shadow: none;
+  color: var(--text-muted);
+}
+.btn--ghost:hover:not(:disabled) {
+  background: var(--surface-hover);
+  border-color: transparent;
+  color: var(--text);
+}
+
+.btn--sm { height: 28px; padding: 0 var(--space-3); font-size: var(--text-2xs); }
+.btn--icon { width: 34px; padding: 0; }
+.btn--icon.btn--sm { width: 28px; }
+
+.input,
+.select {
+  width: 100%;
+  height: 34px;
+  padding: 0 var(--space-3);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--surface);
+  color: var(--text);
+  font-size: var(--text-xs);
+  transition: border-color var(--transition), box-shadow var(--transition);
+}
+.input:hover, .select:hover { border-color: var(--border-strong); }
+.input:focus, .select:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-soft);
+}
+.input::placeholder { color: var(--text-subtle); }
+
+.input--mono {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  letter-spacing: var(--tracking-mono);
+  font-feature-settings: 'calt' 0;
+}
+
+.select {
+  appearance: none;
+  padding-right: var(--space-6);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 10 10'%3E%3Cpath fill='none' stroke='%239ca3af' stroke-width='1.4' stroke-linecap='round' stroke-linejoin='round' d='M2.5 4 5 6.5 7.5 4'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right var(--space-3) center;
+  cursor: pointer;
+}
+
+.label {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: var(--text-2xs);
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-label);
+  color: var(--text-subtle);
+  margin-bottom: var(--space-2);
+}
+
+.checkbox {
+  width: 15px;
+  height: 15px;
+  flex-shrink: 0;
+  accent-color: var(--accent);
+  cursor: pointer;
+}
+
+/* Borderless tinted chips — how state reads everywhere. */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+  padding: 2px var(--space-2);
+  border-radius: var(--radius-sm);
+  background: var(--chip-mute-bg);
+  color: var(--chip-mute-fg);
+  font-family: var(--font-mono);
+  font-size: var(--text-2xs);
+  font-weight: 600;
+  line-height: 1.7;
+  letter-spacing: var(--tracking-mono);
+}
+.badge--ok     { background: var(--chip-ok-bg);     color: var(--chip-ok-fg); }
+.badge--bad    { background: var(--chip-danger-bg); color: var(--chip-danger-fg); }
+.badge--warn   { background: var(--chip-warn-bg);   color: var(--chip-warn-fg); }
+.badge--info   { background: var(--chip-info-bg);   color: var(--chip-info-fg); }
+
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+}
+
+.divider { height: 1px; background: var(--border); border: 0; }
+
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-3);
+  padding: var(--space-10) var(--space-5);
+  text-align: center;
+  color: var(--text-muted);
+}
+.empty-state__icon { color: var(--text-subtle); opacity: 0.6; margin-bottom: var(--space-2); }
+.empty-state__title {
+  font-family: var(--font-mono);
+  font-size: var(--text-base);
+  font-weight: 600;
+  letter-spacing: var(--tracking-mono);
+  color: var(--text);
+}
+.empty-state__hint { font-size: var(--text-xs); max-width: 46ch; line-height: var(--leading); }
+
+.scroll-y { overflow-y: auto; overflow-x: hidden; }
+.mono { font-family: var(--font-mono); letter-spacing: var(--tracking-mono); }
+.truncate { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+
+.visually-hidden {
+  position: absolute;
+  width: 1px; height: 1px;
+  padding: 0; margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+kbd {
+  padding: 1px 5px;
+  border: 1px solid var(--border-strong);
+  border-bottom-width: 2px;
+  border-radius: var(--radius-sm);
+  background: var(--surface);
+  font-family: var(--font-mono);
+  font-size: 0.85em;
+  color: var(--text-muted);
+}
+
+@keyframes spin { to { transform: rotate(360deg); } }
+.spinner {
+  width: 13px; height: 13px;
+  border: 1.5px solid currentColor;
+  border-right-color: transparent;
+  border-radius: 50%;
+  animation: spin 0.55s linear infinite;
+}
+
+@keyframes fade-in { from { opacity: 0; transform: translateY(3px); } to { opacity: 1; transform: none; } }
+.fade-in { animation: fade-in 140ms ease-out; }
