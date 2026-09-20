@@ -20,12 +20,6 @@ def _is_sqlite(url: str) -> bool:
 
 
 def _is_memory(url: str) -> bool:
-    """Detect every spelling of an in-memory SQLite database.
-
-    ``sqlite://`` with an empty path is in-memory too, which is easy to miss:
-    without StaticPool each new connection silently gets its own blank
-    database, and tables created on one are invisible to the next.
-    """
     if not _is_sqlite(url):
         return False
     if ":memory:" in url or "mode=memory" in url:
