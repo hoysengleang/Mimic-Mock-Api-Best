@@ -44,7 +44,6 @@ services:
       - ./src/Mimic.UI/index.html:/app/index.html
       - ./src/Mimic.UI/vite.config.ts:/app/vite.config.ts
     environment:
-      # Inside the compose network the API is reachable by service name.
       VITE_PROXY_TARGET: http://mimic-api:8080
     depends_on:
       mimic-api:
